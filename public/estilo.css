@@ -50,7 +50,17 @@ table {
 body{
 	background: #222222;
 }
+footer{
+	width: 100%;
+	position: absolute;
+	bottom: 0;
+	text-align:  center;
+	color: white;
 
+}
+footer a {
+	color: white;
+}
 .titulo{
 	text-align:  center;
 	font-size: 2em;
