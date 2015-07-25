@@ -1,0 +1,25 @@
+{
+  "name": "chat_react",
+  "version": "1.0.0",
+  "description": "Chat implementando react",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "browserify components/Router.js > public/app.js -t babelify ",
+    "start": "babel-node index.js"
+  },
+  "author": "Miguel Suescun <debian789@gmail.com>",
+  "license": "ISC",
+  "dependencies": {
+    "babel": "^5.8.3",
+    "babelify": "^6.1.3",
+    "browserify": "^11.0.0",
+    "express": "^4.13.1",
+    "lodash": "^3.10.0",
+    "react": "^0.13.3",
+    "react-router": "^0.13.3",
+    "socket.io": "^1.3.6",
+    "socket.io-client": "^1.3.6",
+    "uid": "0.0.2"
+  }
+}
