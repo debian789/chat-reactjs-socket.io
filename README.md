@@ -19,13 +19,13 @@ cd chat-reactjs-socket.io
 
 Es necesario hacer unos pequeños ajustes al codigo para iniciarlo, editar el archivo AppChat.js que esta en la ruta components./AppChat.js y modificar la url de socket.io a this.socket = io('http://localhost:3000');
 
-	
-	```javascript
+	<pre>
+	javascript
 	componentWillMount(){
 
 	this.socket = io('http://localhost:3000');
 
-	```
+	</pre>
 
 
 <h3>Iniciar el proyecto</h3> 
