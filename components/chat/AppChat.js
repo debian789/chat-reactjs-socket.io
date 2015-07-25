@@ -17,7 +17,7 @@ export default class AppChat extends React.Component{
 
 
 	componentWillMount(){
-		this.socket = io('http://localhost:3000');
+		this.socket = io('https://chat-reactjs.herokuapp.com');
 		this.socket.on('mensaje',(mgs) => {
 			if(mgs.user != this.state.user){
 				this.newMensaje(mgs)
