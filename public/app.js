@@ -123,7 +123,7 @@ var AppChat = (function (_React$Component) {
 		value: function componentWillMount() {
 			var _this = this;
 
-			this.socket = (0, _socketIoClient2['default'])('http://localhost:3000');
+			this.socket = (0, _socketIoClient2['default'])('https://chat-reactjs.herokuapp.com');
 			this.socket.on('mensaje', function (mgs) {
 				if (mgs.user != _this.state.user) {
 					_this.newMensaje(mgs);
