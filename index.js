@@ -3,7 +3,7 @@ import http from 'http';
 import engine from 'socket.io';
 
 
-const port = 3000;
+const port = 80;
 const app = express();
 
 app.use('/public',express.static(__dirname+'/public'));
