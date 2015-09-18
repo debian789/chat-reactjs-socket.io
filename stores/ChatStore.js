@@ -3,8 +3,12 @@ import ChatActions from '../actions/ChatActions';
 import $ from 'jquery';
 
 
+
+
+
+
 let ChatStore = Reflux.createStore({
-	url:'https://api.flickr.com/services/feeds/photos_public.gne?format=json&tag=cats',
+	url:'http://pysbuilder.com/api/eventos/subterranica/',
 	listenables:[ChatActions],
 	listItemChat:[],
 	init:function(){
@@ -15,8 +19,8 @@ let ChatStore = Reflux.createStore({
 
 		$.ajax({
 			url:this.url,
-			dataType:'jsonp',
-			jsonpCallback: 'jsonFlickrFeed',
+			dataType:'json',
+			//jsonpCallback: 'jsonFlickrFeed',
 			//jsonpCallback: 'jsonSubterranica',
 			cache: false,
 			context:this,
