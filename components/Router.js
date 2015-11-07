@@ -4,6 +4,7 @@ import Ingreso from './session/Ingreso';
 import AppChat from './chat/AppChat';
 import ChatActions from '../actions/ChatActions';
 
+
 let RouteHandler = Router.RouteHandler;
 
 
@@ -18,7 +19,7 @@ class App extends React.Component{
 		//alert('hola');
 		//console.log('hola mundo !!');
 		
-		ChatActions.fetchList();
+		//ChatActions.fetchList();
 		event.preventDefault();
 
 	}

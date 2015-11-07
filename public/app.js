@@ -63,10 +63,11 @@ var App = (function (_React$Component) {
 	_createClass(App, [{
 		key: 'probar',
 		value: function probar(event) {
+
 			//alert('hola');
 			//console.log('hola mundo !!');
 
-			_actionsChatActions2['default'].fetchList();
+			//ChatActions.fetchList();
 			event.preventDefault();
 		}
 	}, {
