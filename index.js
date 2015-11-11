@@ -7,7 +7,6 @@ let serveStatic = require('serve-static');
 let bodyParse = require('body-parser');
 let multer = require('multer');
 let massive = require('massive');
-
 let http = require('http');
 let engine = require('socket.io');
 
@@ -16,15 +15,13 @@ let engine = require('socket.io');
 let connectionString = "postgres://"+config.postgres.user+":"+config.postgres.password+"@"+config.postgres.host+"/"+config.postgres.db;
 let massiveInstance = massive.connectSync({connectionString:connectionString});
 let db;
-
 let port = process.env.PORT || 3000;
 let app = express();
 
-
 let update = function(request,res,next){
-	let newDoc = request.body.data;
+	let dataRequest = request.body.data;
 	debugger;
-	db.steps.saveDoc({id:1,data:newDoc},function(err,response){
+	db.saveDoc({id:1,data:newDoc},function(err,response){
 		if(err){
 			handleError(res)
 		};
@@ -50,46 +47,58 @@ let newDoc ={registro: [{
 
 
 let saveList = function(req,res,next){
+	let registro = {
+		user:req.body.mensaje,
+		mensaje:req.body.user,
+		date:req.body.date
+	}
 
-	console.log(req.body);
-	//console.log(newDoc);
-	//db.saveDoc("conversacion",newDoc,function(err,ret){
-	//	if(err){
-	//		handleError(res);
-	//	}
-	//	console.log(ret);
-	//	res.end('ummmmm')
-	//})
+	db.saveDoc("conversacion",registro,function(err,ret){
+		if(err){
+			handleError(res);
+		}
+		res.send(200);
+	})
 }
 
+
 let list = function(request,res,next){
-
-console.log(db)
-
-if(!db.conversacion){
-		//loadDemoData();
-		return
+	if(!db.conversacion){
+		res.send(401);
 	};
-	//db.query("SELECT * FROM conversacion;", function(err,doc){
-	db.conversacion.findDoc({id:1},function(err,doc){
-		if (err) {
-			handleError(res)
-		};
-		console.log(doc);
-		if(doc === null){
-			console.log('no cargo nada :( ')
-				res.json({}); 
-		}else{
-		res.json(doc); 
-			
-		}
+
+	var options = {
+	  //limit : 10,
+		//  order : "id",
+		//  offset: 20
+	}
+
+	let datosDB = [];
+
+	var promesa = new Promise(function(resolve, reject) {
+		db.conversacion.find({},options,function(err,doc){
+			if (err) {
+				handleError(res)
+			};
+
+			if(doc === null){
+				res.json({});
+			}else{
+				resolve(doc);
+			}
+		});
+
 	});
 
-//res.writeHead(200,{'Content-Type':'text/plain'});
-//res.end('hola mundo XD');
+	promesa.then(function(vals){
+			vals.forEach(function(dat){
+				datosDB.push(dat.body);
+			});
 
 
+		res.json(datosDB);
 
+	})
 }
 
 
@@ -147,5 +156,3 @@ io.on('connection',function(socket){
 		io.emit('mensaje',msg)
 	})
 })
-
-
