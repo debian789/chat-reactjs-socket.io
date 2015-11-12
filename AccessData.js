@@ -68,7 +68,7 @@ class  AccessData {
   		if(err){
   			handleError(res);
   		}
-  	return 200;
+  	return true;
   	})
 
   }

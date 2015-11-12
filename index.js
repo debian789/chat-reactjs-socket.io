@@ -1,15 +1,16 @@
 'use strict';
 
 
-let config = require('./config.json');
+//let config = require('./config.json');
 let express = require('express');
 let serveStatic = require('serve-static');
 let bodyParse = require('body-parser');
 let multer = require('multer');
-let massive = require('massive');
+//let massive = require('massive');
 let http = require('http');
 let engine = require('socket.io');
-let AccessData = require('./AccessData').getInstance();
+//let AccessData = require('./AccessData').getInstance();
+let Routers = require('./Routers');
 
 //let connectionString = "postgres://"+config.postgres.user+":"+config.postgres.password+"@"+config.postgres.host+"/"+config.postgres.db;
 //let massiveInstance = massive.connectSync({connectionString:connectionString});
@@ -42,30 +43,30 @@ let newDoc ={registro: [{
 
 
 let saveList = function(req,res,next){
-	let registro = {
-		user:req.body.mensaje,
-		mensaje:req.body.user,
-		date:req.body.date
-	}
-		AccessData.crear(registro);
+	//let registro = {
+//		user:req.body.mensaje,
+//		mensaje:req.body.user,
+//		date:req.body.date
+//	}
+//		AccessData.crear(registro);
 
-	res.sendStatus(200)
+//	res.sendStatus(200)
 }
 
 
 let list = function(request,res,next){
 
-	let datosDB=[];
+//	let datosDB=[];
 
-		AccessData.consulta().then(function(vals){
-		        vals.forEach(function(dat){
-		          datosDB.push(dat.body);
-		        });
+//		AccessData.consulta().then(function(vals){
+//		        vals.forEach(function(dat){
+//		          datosDB.push(dat.body);
+	//	        });
 
-		      //return {respuesta:200,data:datosDB}
-		      res.json(datosDB);
+//		      //return {respuesta:200,data:datosDB}
+//		      res.json(datosDB);
 
-		    })
+	//	    })
 
 	// if(!db.conversacion){
 	// 	res.send(401);
@@ -117,9 +118,16 @@ app.use(bodyParse.json());
 app.use(bodyParse.urlencoded({extended: true}));
 //app.use(multer());
 
-app.route('/api/list').get(list);
-app.route('/api/update').post(update);
-app.route('/api/save').post(saveList);
+//app.route('/api/list').get(list);
+//app.route('/api/update').post(update);
+//app.route('/api/save').post(saveList);
+
+
+app.use('/api/save',Routers.create);
+console.log("llego aqui 0!!");
+app.use('/api/listar',Routers.listar);
+
+
 
 
 //app.use(serveStatic('./public'));
