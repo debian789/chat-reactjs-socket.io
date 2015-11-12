@@ -9,27 +9,22 @@ let multer = require('multer');
 let massive = require('massive');
 let http = require('http');
 let engine = require('socket.io');
+let AccessData = require('./AccessData').getInstance();
 
-//CREATE TABLE conversacion(id serial PRIMARY KEY, registro JSON);
-
-let connectionString = "postgres://"+config.postgres.user+":"+config.postgres.password+"@"+config.postgres.host+"/"+config.postgres.db;
-let massiveInstance = massive.connectSync({connectionString:connectionString});
-let db;
+//let connectionString = "postgres://"+config.postgres.user+":"+config.postgres.password+"@"+config.postgres.host+"/"+config.postgres.db;
+//let massiveInstance = massive.connectSync({connectionString:connectionString});
+//let db;
 let port = process.env.PORT || 3000;
 let app = express();
 
 let update = function(request,res,next){
 	let dataRequest = request.body.data;
-	debugger;
-	db.saveDoc({id:1,data:newDoc},function(err,response){
-		if(err){
-			handleError(res)
-		};
-
-		console.log(response);
-		res.json({data:response});
-
-	})
+	//db.saveDoc({id:1,data:newDoc},function(err,response){
+	//	if(err){
+	//		handleError(res)
+	//	};
+	//	res.json({data:response});
+	// })
 }
 
 
@@ -52,53 +47,62 @@ let saveList = function(req,res,next){
 		mensaje:req.body.user,
 		date:req.body.date
 	}
+		AccessData.crear(registro);
 
-	db.saveDoc("conversacion",registro,function(err,ret){
-		if(err){
-			handleError(res);
-		}
-		res.send(200);
-	})
+	res.sendStatus(200)
 }
 
 
 let list = function(request,res,next){
-	if(!db.conversacion){
-		res.send(401);
-	};
 
-	var options = {
-	  //limit : 10,
-		//  order : "id",
-		//  offset: 20
-	}
+	let datosDB=[];
 
-	let datosDB = [];
+		AccessData.consulta().then(function(vals){
+		        vals.forEach(function(dat){
+		          datosDB.push(dat.body);
+		        });
 
-	var promesa = new Promise(function(resolve, reject) {
-		db.conversacion.find({},options,function(err,doc){
-			if (err) {
-				handleError(res)
-			};
+		      //return {respuesta:200,data:datosDB}
+		      res.json(datosDB);
 
-			if(doc === null){
-				res.json({});
-			}else{
-				resolve(doc);
-			}
-		});
+		    })
 
-	});
-
-	promesa.then(function(vals){
-			vals.forEach(function(dat){
-				datosDB.push(dat.body);
-			});
-
-
-		res.json(datosDB);
-
-	})
+	// if(!db.conversacion){
+	// 	res.send(401);
+	// };
+	//
+	// var options = {
+	//   //limit : 10,
+	// 	//  order : "id",
+	// 	//  offset: 20
+	// }
+	//
+	// let datosDB = [];
+	//
+	// var promesa = new Promise(function(resolve, reject) {
+	// 	db.conversacion.find({},options,function(err,doc){
+	// 		if (err) {
+	// 			handleError(res)
+	// 		};
+	//
+	// 		if(doc === null){
+	// 			res.json({});
+	// 		}else{
+	// 			resolve(doc);
+	// 		}
+	// 	});
+	//
+	// });
+	//
+	// promesa.then(function(vals){
+	// 		vals.forEach(function(dat){
+	// 			datosDB.push(dat.body);
+	// 		});
+	//
+	//
+	// 	res.json(datosDB);
+	//
+	// })
 }
 
 
@@ -122,7 +126,13 @@ app.route('/api/save').post(saveList);
 
 app.use('/public',express.static(__dirname+'/public'));
 
-app.set('db',massiveInstance);
+//app.set('db',massiveInstance);
+//db=app.get('db');
+
+
+
+//debugger;
+
 
 //initialize();
 
@@ -143,8 +153,6 @@ let server = http.createServer(app).listen(port,function() {
 
 	console.log(` Servidor corriendo en el puerto ${port} `);
 })
-
-db=app.get('db');
 
 
 
