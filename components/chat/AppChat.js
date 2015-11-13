@@ -44,6 +44,7 @@ var AppChat = React.createClass({
 
 		this.setState({user:userUrl});
 
+    getMensajesOld();
 
 	},
 
@@ -55,10 +56,13 @@ var AppChat = React.createClass({
 
 		//Envia un mensaje al server, este se encarga de reenviarlo a todos
 		this.socket.emit('mensaje',mensajeEnviar)
-		ChatActions.getListConversacion();
 
 
 	},
+
+  getMensajesOld(){
+		ChatActions.getListConversacion();
+  },
 
 
 	newMensaje(mensaje){

@@ -4,7 +4,7 @@
 let Reflux = require('reflux');
 
 let ChatActions = Reflux.createActions([
-	'getListConversacion'
+	'getListConversacion','saveConversacion'
 ]);
 
 module.exports = ChatActions;
