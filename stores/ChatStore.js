@@ -1,6 +1,12 @@
-import Reflux from 'reflux';
-import ChatActions from '../actions/ChatActions';
-import $ from 'jquery';
+'use strict';
+//import Reflux from 'reflux';
+//import ChatActions from '../actions/ChatActions';
+//import $ from 'jquery';
+
+let Reflux = require('reflux');
+let ChatActions = require('../actions/ChatActions');
+let  $ = require('jquery');
+
 
 
 
@@ -8,14 +14,14 @@ import $ from 'jquery';
 
 
 let ChatStore = Reflux.createStore({
-	url:'http://pysbuilder.com/api/eventos/subterranica/',
+	url:'/api/listar',
 	listenables:[ChatActions],
 	listItemChat:[],
 	init:function(){
-		this.fetchList
+		this.getListConversacion()
 	},
-	fetchList: function(){
-		//debugger;
+	getListConversacion: function(){
+	//	debugger;
 
 		$.ajax({
 			url:this.url,
@@ -37,5 +43,5 @@ let ChatStore = Reflux.createStore({
 })
 
 
-
-export default ChatStore;
+module.exports = ChatStore;
+//export default ChatStore;

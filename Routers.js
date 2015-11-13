@@ -9,8 +9,8 @@ let AccessData = require('./AccessData').getInstance();
 module.exports = {
   update: router.post('/',(req,res) => {}),
   create: app.post('/',(req,res) => {
-//debugger;
-console.log("llego aqui 1!!");
+    //debugger;
+    console.log("llego aqui 1!!");
 
     let registro = {
       user:req.body.mensaje,
@@ -25,7 +25,7 @@ console.log("llego aqui 1!!");
   listar: router.get('/',(req,res) => {
     console.log("llego aqui 2!!");
     let datosDB=[];
-    debugger;
+  //  debugger;
 
   		AccessData.consulta().then(function(vals){
   		    vals.forEach(function(dat){

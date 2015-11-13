@@ -1,8 +1,11 @@
-import Reflux from 'reflux';
+'use strict';
+//import Reflux from 'reflux';
+
+let Reflux = require('reflux');
 
 let ChatActions = Reflux.createActions([
-	'fetchList'
+	'getListConversacion'
 ]);
 
-
-export default ChatActions;
+module.exports = ChatActions;
+//export default ChatActions;

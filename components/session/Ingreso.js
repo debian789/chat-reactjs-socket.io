@@ -1,15 +1,23 @@
-import React, { findDOMNode }  from 'react';
-import { default as Router, Route,Navigation, TransitionHook } from 'react-router';
+'use strict';
+let React = require('react');
+let ReactDOM = require('react-dom');
+let History = require('react-router').History;
+//let TransitionHook = require('react-router').TransitionHook;
+let Link = require('react-router').Link;
+
+//import React, { findDOMNode }  from 'react';
+//import { default as Router, Route,Navigation, TransitionHook } from 'react-router';
 
 
-export default React.createClass({
- mixins: [ Navigation, TransitionHook ],
+//export default React.createClass({
+module.exports = React.createClass({
+ mixins: [ History ],
 
 	handleSubmit(event) {
 	    event.preventDefault();
-	    let userInput = findDOMNode(this.refs.userInput).value;
-	    this.transitionTo(`/chat/${userInput}`);
-	 
+	    let userInput = ReactDOM.findDOMNode(this.refs.userInput).value;
+	    this.history.pushState(null,`/chat/${userInput}`);
+
 	  },
 		render(){
 		return <div className="inicioSession">
@@ -20,4 +28,3 @@ export default React.createClass({
 		</div>
 	}
 })
-
