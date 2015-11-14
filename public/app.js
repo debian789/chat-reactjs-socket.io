@@ -5,7 +5,7 @@
 ;
 let Reflux = require('reflux');
 
-let ChatActions = Reflux.createActions(['getListConversacion']);
+let ChatActions = Reflux.createActions(['getListConversacion', 'saveConversacion']);
 
 module.exports = ChatActions;
 //export default ChatActions;
@@ -129,13 +129,10 @@ let ListChat = require('./ListChat');
 let InputMensaje = require('./InputMensaje');
 let uid = require('uid');
 let io = require('socket.io-client');
-let Reflux = require('reflux');
-let ChatStore = require('../../stores/ChatStore');
+
 let ChatActions = require('../../actions/ChatActions');
 
 var AppChat = React.createClass({
-
-	mixins: [Reflux.connect(ChatStore, 'ChatStore')],
 
 	getInitialState: function () {
 		return { mensajes: [], user: '' };
@@ -159,6 +156,8 @@ var AppChat = React.createClass({
 		let userUrl = this.props.params.user;
 
 		this.setState({ user: userUrl });
+
+		this.getMensajesOld();
 	},
 
 	sendMensaje(mensaje) {
@@ -168,6 +167,9 @@ var AppChat = React.createClass({
 
 		//Envia un mensaje al server, este se encarga de reenviarlo a todos
 		this.socket.emit('mensaje', mensajeEnviar);
+	},
+
+	getMensajesOld() {
 		ChatActions.getListConversacion();
 	},
 
@@ -178,8 +180,6 @@ var AppChat = React.createClass({
 	},
 
 	render() {
-
-		//debugger
 
 		return React.createElement(
 			'div',
@@ -258,7 +258,7 @@ module.exports = AppChat;
 // 	}
 // }
 
-},{"../../actions/ChatActions":1,"../../stores/ChatStore":285,"./InputMensaje":4,"./ListChat":6,"react":216,"reflux":233,"socket.io-client":236,"uid":284}],4:[function(require,module,exports){
+},{"../../actions/ChatActions":1,"./InputMensaje":4,"./ListChat":6,"react":216,"socket.io-client":236,"uid":284}],4:[function(require,module,exports){
 'use strict'
 //import React from 'react';
 ;
@@ -330,11 +330,16 @@ module.exports = React.createClass({
 ;
 let React = require('react');
 let ItemListChat = require('./ItemListChat');
+let ChatStore = require('../../stores/ChatStore');
+let ChatActions = require('../../actions/ChatActions');
+let Reflux = require('reflux');
+let uid = require('uid');
 
 //export default class ListChat extends React.Component{
 //module.exports =  class ListChat extends React.Component{
 
 module.exports = React.createClass({
+	mixins: [Reflux.connect(ChatStore, 'chatStore')],
 
 	getDefaultProps: function () {
 		return {
@@ -342,21 +347,36 @@ module.exports = React.createClass({
 		};
 	},
 	render: function () {
+		//debugger
+		//let
 
-		return React.createElement(
-			'div',
-			{ className: 'panelListChat' },
-			this.props.conten.map(function (dato) {
-				return React.createElement(ItemListChat, { user: dato.user, mensaje: dato.mensaje, key: dato.key, estiloItem: dato.estilo });
-			})
-		);
+		if (this.state.chatStore) {
+			//debugger;
+			return React.createElement(
+				'div',
+				{ className: 'panelListChat' },
+				this.state.chatStore.map(function (itemChat) {
+					return React.createElement(ItemListChat, { user: itemChat.user, mensaje: itemChat.mensaje, key: uid(), estiloItem: itemChat.estilo });
+				})
+			);
+		} else {
+			//	debugger;
+
+			return React.createElement(
+				'div',
+				{ className: 'panelListChat' },
+				this.props.conten.map(function (dato) {
+					return React.createElement(ItemListChat, { user: dato.user, mensaje: dato.mensaje, key: dato.key, estiloItem: dato.estilo });
+				})
+			);
+		}
 	}
 
 });
 
 //ListChat.defaultProps = {conten:[]}
 
-},{"./ItemListChat":5,"react":216}],7:[function(require,module,exports){
+},{"../../actions/ChatActions":1,"../../stores/ChatStore":285,"./ItemListChat":5,"react":216,"reflux":233,"uid":284}],7:[function(require,module,exports){
 'use strict';
 
 let React = require('react');

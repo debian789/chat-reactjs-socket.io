@@ -13,13 +13,11 @@ let ListChat = require('./ListChat');
 let InputMensaje = require('./InputMensaje');
 let uid = require('uid');
 let io = require('socket.io-client');
-let Reflux = require('reflux');
-let ChatStore = require('../../stores/ChatStore');
+
 let ChatActions = require('../../actions/ChatActions');
 
 var AppChat = React.createClass({
 
-  mixins: [Reflux.connect(ChatStore, 'ChatStore')],
 
     getInitialState: function() {
     	return {mensajes:[],user:''};
@@ -44,7 +42,7 @@ var AppChat = React.createClass({
 
 		this.setState({user:userUrl});
 
-    getMensajesOld();
+    this.getMensajesOld();
 
 	},
 
@@ -62,6 +60,7 @@ var AppChat = React.createClass({
 
   getMensajesOld(){
 		ChatActions.getListConversacion();
+
   },
 
 
@@ -75,12 +74,15 @@ var AppChat = React.createClass({
 	render(){
 
 
-		//debugger
+
 
 		return <div>
 			<a href="#" className="salir">Salir</a>
 			<div className="cuadroChat">
+
 				<ListChat conten={this.state.mensajes}/>
+
+
 				<InputMensaje  onSendMensaje={this.sendMensaje}/>
 			</div>
 		</div>
