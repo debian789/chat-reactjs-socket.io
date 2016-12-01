@@ -1,221 +1,252 @@
-/* http://meyerweb.com/eric/tools/css/reset/ 
-   v2.0 | 20110126
-   License: none (public domain)
-*/
-
-html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,
-del, dfn, em, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var,
-b, u, i, center,
-dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed, 
-figure, figcaption, footer, header, hgroup, 
-menu, nav, output, ruby, section, summary,
-time, mark, audio, video {
-	margin: 0;
-	padding: 0;
-	border: 0;
-	font-size: 100%;
-	font: inherit;
-	vertical-align: baseline;
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
 }
-/* HTML5 display-role reset for older browsers */
-article, aside, details, figcaption, figure, 
-footer, header, hgroup, menu, nav, section {
-	display: block;
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
 }
 body {
-	line-height: 1;
+  line-height: 1;
+  background: #222;
 }
-ol, ul {
-	list-style: none;
+ol,
+ul {
+  list-style: none;
 }
-blockquote, q {
-	quotes: none;
+blockquote,
+q {
+  quotes: none;
 }
-blockquote:before, blockquote:after,
-q:before, q:after {
-	content: '';
-	content: none;
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: '';
+  content: none;
 }
 table {
-	border-collapse: collapse;
-	border-spacing: 0;
+  border-collapse: collapse;
+  border-spacing: 0;
 }
-
-body{
-	background: #222222;
-}
-footer{
-	width: 100%;
-	position: absolute;
-	bottom: 0;
-	text-align:  center;
-	color: white;
-
+footer {
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  text-align: center;
+  color: #fff;
 }
 footer a {
-	color: white;
+  color: #fff;
 }
-.titulo{
-	text-align:  center;
-	font-size: 2em;
-	color:white;
-	margin-top:1em;
+.titulo {
+  text-align: center;
+  font-size: 2em;
+  color: #fff;
+  margin-top: 1em;
 }
-.salir{
-	position: relative;
-	width: 50%;
-	margin: auto;
-	text-align:  right;
-	display: block;
-	color: white;
-	left:0;
-	right:0;
-	clear: both;
+.salir {
+  position: relative;
+  width: 50%;
+  margin: auto;
+  text-align: right;
+  display: block;
+  color: #fff;
+  left: 0;
+  right: 0;
+  clear: both;
 }
-
-.panelListChat{
-	bottom: 3.2em;
-	left: 1em;
-	position: absolute;
-	right: 1em;
-
-	color:#222;
+.panelListChat {
+  bottom: 3.2em;
+  left: 1em;
+  position: absolute;
+  right: 1em;
+  color: #222;
 }
-
-.itemListChat{
-	
-	padding: 0.3em 1em 0.3em 1em;
-	border-radius: 5px;
-	background: white;
-	margin-bottom: 0.5em;
-	width: 80%;
-	text-align: right;
-	margin-left:auto;
-
-	}
-
-.itemListChat2{
-	
-	padding: 0.3em 1em 0.3em 1em;
-	border-radius: 5px 5px 5px 5px;
-	background: #ccc;
-	margin-bottom: 0.5em;
-	width: 80%;
-	text-align: left;
-	margin-right:auto;
-	
-	}
-
-
-.itemListChat span{
-	display: block;
-	color:#ccc;
-	text-align: left;
+.itemListChat {
+  padding: 0.3em 1em 0.3em 1em;
+  border-radius: 5px;
+  background: #fff;
+  margin-bottom: 0.5em;
+  width: 80%;
+  text-align: right;
+  margin-left: auto;
 }
-
-
-
-
-	
-.itemListChat2 span{
-	display: block;
-	color:#efefef;
-	text-align: right;
+.itemListChat span {
+  display: block;
+  color: #ccc;
+  text-align: left;
 }
-
-
-
-
-
-
-
-
-
-.cuadroChat{
-	overflow: hidden;
-	border:1px solid white;
-	border-radius: 5px 5px 0 0 ;
-	position: absolute;
-	width: 50%;
-	margin:auto;
-	height: auto;
-	min-height: 70%;
-	top:auto;
-	left:  0;
-	right: 0;
-	background: #3C3C3C;
-	bottom: 5em;
-
-
+.itemListChat2 {
+  padding: 0.3em 1em 0.3em 1em;
+  border-radius: 5px 5px 5px 5px;
+  background: #ccc;
+  margin-bottom: 0.5em;
+  width: 80%;
+  text-align: left;
+  margin-right: auto;
 }
-
-
-.inicioSession{
-	border:1px solid white;
-	border-radius: 5px;
-	background: #3C3C3C;
-	width: 30%;
-	margin:  2em auto;
-	padding:3em;
+.itemListChat2 span {
+  display: block;
+  color: #efefef;
+  text-align: right;
 }
-.inicioSession input[type=text]{
-	width: 76%;
-	display: inline-block;
-	padding: 0 0 0 4%;
-	border:0;
-	
-	line-height: 3em;
-	
+.cuadroChat {
+  overflow: hidden;
+  border: 1px solid #fff;
+  border-radius: 5px 5px 0 0;
+  position: absolute;
+  width: 50%;
+  margin: auto;
+  height: auto;
+  min-height: 70%;
+  top: auto;
+  left: 0;
+  right: 0;
+  background: #3c3c3c;
+  bottom: 5em;
 }
-
-.inicioSession button{
-	display: inline-block;
-	width: 20%;
-	border:0;
-	
-	line-height: 3em;
-	padding: 0;
-	
+.inicioSession {
+  border: 1px solid #fff;
+  border-radius: 5px;
+  background: #3c3c3c;
+  width: 30%;
+  margin: 2em auto;
+  padding: 3em;
 }
-
-.inputChat input{
-	width:  99%;
-	bottom: 0;
-	position: absolute;
-	line-height: 3em;
-	text-align: right;
+.inicioSession input[type=text] {
+  width: 76%;
+  display: inline-block;
+  padding: 0 0 0 4%;
+  border: 0;
+  line-height: 3em;
 }
-
-
+.inicioSession button {
+  display: inline-block;
+  width: 20%;
+  border: 0;
+  line-height: 3em;
+  padding: 0;
+}
+.inputChat input {
+  width: 99%;
+  bottom: 0;
+  position: absolute;
+  line-height: 3em;
+  text-align: right;
+}
 @media all and (max-width: 700px) {
-.cuadroChat{
-	width: 90%;
-
+  .cuadroChat {
+    width: 90%;
+  }
+  .salir {
+    width: 90%;
+  }
+  .titulo {
+    font-size: 25px;
+    width: 100%;
+  }
+  .inicioSession {
+    width: 68%;
+    padding: 10%;
+  }
+  .inicioSession input[type=text] {
+    width: 62%;
+  }
+  .inicioSession button {
+    width: 30%;
+  }
 }
-.salir{
-width: 90%;
-	
-}
-
-.titulo{
-	font-size: 25px;
-	width:  100%;
-}
-.inicioSession{
-width: 68%;
-padding:10%;
-}
-
-.inicioSession input[type=text]{
-	width: 62%;
-}
-.inicioSession button{
-	width: 30%
-}
-

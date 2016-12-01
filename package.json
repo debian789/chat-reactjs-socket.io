@@ -6,6 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "browserify components/Router.js > public/app.js -t babelify ",
+    "build:css": "stylus app/stylus/estilo.styl -w -o public/estilo.css",
     "start": "babel-node index.js"
   },
   "author": "Miguel Suescun <debian789@gmail.com>",
@@ -20,6 +21,7 @@
     "react-router": "^3.0.0",
     "socket.io": "^1.7.1",
     "socket.io-client": "^1.7.1",
+    "stylus": "^0.54.5",
     "uid": "0.0.2"
   },
   "devDependencies": {
