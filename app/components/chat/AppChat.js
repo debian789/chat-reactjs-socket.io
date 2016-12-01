@@ -17,8 +17,8 @@ export default class AppChat extends React.Component{
 	componentWillMount(){
 
 		// Url de escucha de socket.io, el cliente con  el server
-		this.socket = io('https://chat-reactjs.herokuapp.com');
-		//this.socket = io('http://localhost:3000');
+		//this.socket = io('https://chat-reactjs.herokuapp.com');
+		this.socket = io('http://localhost:3000');
 
 		//Esta pendiente de recibir informacion desde el server
 		this.socket.on('mensaje',(mgs) => {
@@ -56,9 +56,11 @@ export default class AppChat extends React.Component{
 	render(){
 		return <div>
 			<a href="#" className="salir">Salir</a>
-			<div className="cuadroChat">
-				<ListChat conten={this.state.mensajes}/>
-				<InputMensaje  onSendMensaje={this.sendMensaje}/>
+			<div className="contenedorChant">
+				<div className="cuadroChat">
+					<ListChat conten={this.state.mensajes}/>
+					<InputMensaje  onSendMensaje={this.sendMensaje}/>
+				</div>
 			</div>
 		</div>
 

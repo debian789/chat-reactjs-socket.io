@@ -70,9 +70,10 @@ footer
 .panelListChat
   bottom 3.2em
   left 1em
-  position absolute
+  //position absolute
   right 1em
   color #222
+  background: red;
 
 .itemListChat
   padding 0.3em 1em 0.3em 1em
@@ -100,12 +101,20 @@ footer
     color #efefef
     text-align right
 
+.contenedorChant 
+  display: flex;
+  border: 1px solid blue;
+  background: blue;
+
+
 .cuadroChat
-  overflow hidden
+  overflow scroll
   border 1px solid white
   border-radius 5px 5px 0 0
-  position absolute
+  //position absolute
   width 50%
+  display: flex;
+  flex-direction: column-reverse;
   margin auto
   height auto
   min-height 70%

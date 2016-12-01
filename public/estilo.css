@@ -152,9 +152,9 @@ footer a {
 .panelListChat {
   bottom: 3.2em;
   left: 1em;
-  position: absolute;
   right: 1em;
   color: #222;
+  background: #f00;
 }
 .itemListChat {
   padding: 0.3em 1em 0.3em 1em;
@@ -184,12 +184,18 @@ footer a {
   color: #efefef;
   text-align: right;
 }
+.contenedorChant {
+  display: flex;
+  border: 1px solid #00f;
+  background: #00f;
+}
 .cuadroChat {
-  overflow: hidden;
+  overflow: scroll;
   border: 1px solid #fff;
   border-radius: 5px 5px 0 0;
-  position: absolute;
   width: 50%;
+  display: flex;
+  flex-direction: column-reverse;
   margin: auto;
   height: auto;
   min-height: 70%;

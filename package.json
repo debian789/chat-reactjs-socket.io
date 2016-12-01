@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "browserify components/Router.js > public/app.js -t babelify ",
+    "build": "browserify app/components/Router.js > public/app.js -t babelify ",
     "build:css": "stylus app/stylus/estilo.styl -w -o public/estilo.css",
     "start": "babel-node index.js"
   },
@@ -25,6 +25,7 @@
     "uid": "0.0.2"
   },
   "devDependencies": {
-    "babel-preset-es2015": "^6.18.0"
+    "babel-preset-es2015": "^6.18.0",
+    "babel-preset-react": "^6.16.0"
   }
 }
