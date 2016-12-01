@@ -1,6 +1,6 @@
 import express from 'express';
 import http from 'http';
-import engine from 'socket.io';
+import engine from 'socket.io'
 
 
 const port = process.env.PORT || 3000;
