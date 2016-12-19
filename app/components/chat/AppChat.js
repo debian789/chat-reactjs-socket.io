@@ -49,6 +49,9 @@ export default class AppChat extends React.Component{
 	newMensaje(mensaje){
 			this.state.mensajes.push(mensaje);
 			let mensajes = this.state.mensajes;
+			debugger
+			// mensaje.mensaje.split('.')[mensaje.mensaje.split('.').length -1 ]
+			// mensaje.mensaje.split('.').indexOf("jpg")
 			this.setState({mensajes:mensajes})
 	}
 
