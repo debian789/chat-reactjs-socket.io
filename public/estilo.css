@@ -149,13 +149,6 @@ footer a {
   right: 0;
   clear: both;
 }
-.panelListChat {
-  bottom: 3.2em;
-  left: 1em;
-  right: 1em;
-  color: #222;
-  background: #f00;
-}
 .itemListChat {
   padding: 0.3em 1em 0.3em 1em;
   border-radius: 5px;
@@ -186,24 +179,91 @@ footer a {
 }
 .contenedorChant {
   display: flex;
-  border: 1px solid #00f;
-  background: #00f;
+  border: 0px solid #00f;
+  background: #fff;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
 }
-.cuadroChat {
+.contenedorChant .cuadroChat {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
   overflow: scroll;
-  border: 1px solid #fff;
-  border-radius: 5px 5px 0 0;
+  overflow-x: hidden;
+  margin: auto;
+  border: 1px solid #eee;
   width: 50%;
   display: flex;
   flex-direction: column-reverse;
-  margin: auto;
-  height: auto;
   min-height: 70%;
-  top: auto;
-  left: 0;
+  background: #eee;
+}
+.contenedorChant .cuadroChat .panelListChat {
+  bottom: 3.2em;
+  left: 1em;
+  padding-left: 10px;
+  padding-right: 10px;
+  right: 1em;
+  color: #222;
+  margin-bottom: 40px;
+  background: #eee;
+}
+.contenedorChant .cuadroChat .inputChat {
+  position: fixed;
+  width: 50%;
+  display: inline-block;
+}
+.contenedorChant .cuadroChat .inputChat input:hover {
+  border: 0px solid #00f;
+}
+.contenedorChant .cuadroChat .inputChat input:focus {
+  border: 0px solid #f00;
+  box-shadow: none;
+  outline: none;
+}
+.contenedorChant .cuadroChat .inputChat input {
+  padding: 0;
+  width: 88%;
+  height: 40px;
+  bottom: 0;
+  margin: 0;
+  border: 0;
+  float: left;
+  text-align: left;
+  padding-left: 2%;
+  box-shadow: none;
+  font-family: sans-serif;
+  font-size: 18px;
+  appearance: none;
+  box-shadow: none;
+  border-radius: none;
+  line-height: 3em;
+}
+.contenedorChant .cuadroChat .inputChat button:hover {
+  border: 0;
+}
+.contenedorChant .cuadroChat .inputChat button:focus {
+  border: 0;
+  outline: none;
+}
+.contenedorChant .cuadroChat .inputChat button {
+  color: #4a8bff;
+  padding: 0;
+  font-size: 30px;
+  float: right;
   right: 0;
-  background: #3c3c3c;
-  bottom: 5em;
+  height: 40px;
+  width: 10%;
+  border: 0;
+  background: #fff;
 }
 .inicioSession {
   border: 1px solid #fff;
@@ -227,16 +287,18 @@ footer a {
   line-height: 3em;
   padding: 0;
 }
-.inputChat input {
-  width: 99%;
-  bottom: 0;
-  position: absolute;
-  line-height: 3em;
-  text-align: right;
-}
 @media all and (max-width: 700px) {
-  .cuadroChat {
+  .contenedorChant .cuadroChat {
     width: 90%;
+  }
+  .contenedorChant .cuadroChat .inputChat {
+    width: 90%;
+  }
+  .contenedorChant .cuadroChat .inputChat input {
+    width: 80%;
+  }
+  .contenedorChant .cuadroChat .inputChat button {
+    width: 18%;
   }
   .salir {
     width: 90%;

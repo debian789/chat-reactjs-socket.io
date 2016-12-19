@@ -67,13 +67,7 @@ footer
   right 0
   clear both
 
-.panelListChat
-  bottom 3.2em
-  left 1em
-  //position absolute
-  right 1em
-  color #222
-  background: red;
+
 
 .itemListChat
   padding 0.3em 1em 0.3em 1em
@@ -103,27 +97,83 @@ footer
 
 .contenedorChant 
   display: flex;
-  border: 1px solid blue;
-  background: blue;
-
-
-.cuadroChat
-  overflow scroll
-  border 1px solid white
-  border-radius 5px 5px 0 0
-  //position absolute
-  width 50%
-  display: flex;
-  flex-direction: column-reverse;
-  margin auto
-  height auto
-  min-height 70%
-  top auto
+  border: 0px solid blue;
+  background: #fff;
+  position: absolute 
+  top 0
+  bottom: 0
   left 0
-  right 0
-  background #3C3C3C
-  bottom 5em
+  right: 0
+  width: 100%
+  height: 100%
+  .cuadroChat
+    position: absolute
+    top 0
+    bottom: 0
+    left 0
+    right: 0
+    height: 100%
+    overflow scroll
+    overflow-x: hidden
+    margin auto
+    border 1px solid #eee
+    width 50%
+    display: flex;
+    flex-direction: column-reverse;
+    min-height 70%
+    background #eee// #3C3C3C
+    .panelListChat
+      bottom 3.2em
+      left 1em
+      padding-left 10px
+      padding-right: 10px
+      right 1em
+      color #222
+      margin-bottom: 40px
+      background: #eee;
+    .inputChat
+      position: fixed
+      width:  50%
+      display: inline-block
+      input:hover
+        border 0px solid blue
+      input:focus 
+        border 0px solid red 
+        box-shadow: none
+        outline: none;
+      input
+        padding 0 
+        width 88%
+        height: 40px
+        bottom 0
+        margin: 0
+        border 0
+        float: left
+        text-align: left
+        padding-left: 2%
+        box-shadow: none
+        font-family: sans-serif;
+        font-size: 18px;
+        appearance: none;
+        box-shadow: none;
+        border-radius: none;
+        line-height 3em
+      button:hover 
+        border 0
+      button:focus
+        border 0
+        outline: none;
 
+      button
+        color #4A8BFF
+        padding 0
+        font-size: 30px
+        float: right
+        right:  0
+        height: 40px
+        width 10%
+        border 0
+        background: #fff
 .inicioSession
   border 1px solid white
   border-radius 5px
@@ -144,17 +194,18 @@ footer
     line-height 3em
     padding 0
 
-.inputChat
-  input
-    width 99%
-    bottom 0
-    position absolute
-    line-height 3em
-    text-align right
+
 
 @media all and (max-width: 700px)
-  .cuadroChat
-    width 90%
+  .contenedorChant
+    .cuadroChat
+      width 90%
+      .inputChat
+        width 90%
+        input 
+          width 80%
+        button 
+          width: 18%
   .salir
     width 90%
   .titulo

@@ -1,22 +1,27 @@
-import React, { findDOMNode }  from 'react';
-import { default as Router, Route,Navigation, TransitionHook } from 'react-router';
+import React  from 'react';
+import {  Link } from 'react-router';
 
-export default React.createClass({
- mixins: [ Navigation, TransitionHook ],
+export default class Ingreso extends React.Component {
 
-	handleSubmit(event) {
+	constructor (props) {
+		super(props) 
+		this.state = {
+			nameUser : ''
+		}
+		this.handleChange = this.handleChange.bind(this);
+	}
+
+	handleChange(event) {
 	    event.preventDefault();
-	    let userInput = findDOMNode(this.refs.userInput).value;
-	    this.transitionTo(`/chat/${userInput}`);
-	 
-	  },
-		render(){
+		this.setState({nameUser:event.target.value})	 
+	  }
+	render() {
 		return <div className="inicioSession">
-			<form onSubmit={this.handleSubmit}>
-				<input type="text" ref="userInput" placeholder="Name"/>
-				<button type="submit" > Ingresar</button>
-			</form>
+			<input type="text"  placeholder="Name" onChange={this.handleChange}/>
+			
+				<Link to={{ pathname: '/chat/' + this.state.nameUser, query: { showAge: true } }}> <button> Ingresar </button></Link>
+			
 		</div>
 	}
-})
+}
 
