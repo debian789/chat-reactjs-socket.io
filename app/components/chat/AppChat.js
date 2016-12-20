@@ -11,6 +11,7 @@ export default class AppChat extends React.Component{
 		super(props);
 		this.state = {mensajes:[],user:''}
 		this.sendMensaje =this.sendMensaje.bind(this);
+		this.clearMessage =this.clearMessage.bind(this);
 	}
 
 
@@ -18,13 +19,18 @@ export default class AppChat extends React.Component{
 
 		// Url de escucha de socket.io, el cliente con  el server
 		//this.socket = io('https://chat-reactjs.herokuapp.com');
-		this.socket = io('http://localhost:3000');
+		this.socket = io('http://192.168.1.104:3000');
+		//this.socket = io('http://localhost:3000');
 
 		//Esta pendiente de recibir informacion desde el server
 		this.socket.on('mensaje',(mgs) => {
 			if(mgs.user != this.state.user){
 				this.newMensaje(mgs)
 			}
+		})
+
+		this.socket.on('clear', (data) => {
+			this.setState({mensajes:[]})
 		})
 
 		//Obtiene los parametros que se pasaron por url 
@@ -49,11 +55,16 @@ export default class AppChat extends React.Component{
 	newMensaje(mensaje){
 			this.state.mensajes.push(mensaje);
 			let mensajes = this.state.mensajes;
-			debugger
 			// mensaje.mensaje.split('.')[mensaje.mensaje.split('.').length -1 ]
 			// mensaje.mensaje.split('.').indexOf("jpg")
 			this.setState({mensajes:mensajes})
 	}
+
+	clearMessage (data) {
+		debugger
+		this.socket.emit('clear',"clear")
+	}
+
 
 
 	render(){
@@ -61,8 +72,8 @@ export default class AppChat extends React.Component{
 			<a href="#" className="salir">Salir</a>
 			<div className="contenedorChant">
 				<div className="cuadroChat">
-					<ListChat conten={this.state.mensajes}/>
-					<InputMensaje  onSendMensaje={this.sendMensaje}/>
+					<ListChat conten={this.state.mensajes} onClearMessage={this.clearMessage}/>
+					<InputMensaje  onSendMensaje={this.sendMensaje}  />
 				</div>
 			</div>
 		</div>

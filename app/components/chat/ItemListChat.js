@@ -6,7 +6,6 @@ export default class ItemListChat extends React.Component{
 		return 	<div className={this.props.estiloItem} >
 				<span>{this.props.user}</span>
 				<ItemDinamic mensaje={this.props.mensaje}></ItemDinamic>
-				<p>{this.props.mensaje}</p>
 			</div>
 	}
 }

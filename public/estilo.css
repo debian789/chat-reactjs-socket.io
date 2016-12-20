@@ -149,6 +149,45 @@ footer a {
   right: 0;
   clear: both;
 }
+.btnPanic {
+  width: 25%;
+  height: 7em;
+  position: fixed;
+  z-index: 1000;
+  top: 0;
+  background: #ccc;
+  opacity: 0.3;
+}
+.imgMessage {
+  width: 100%;
+}
+.video video {
+  width: 100%;
+}
+.video .video-controls .video-play {
+  display: block;
+  width: 30px;
+  height: 27px;
+}
+.video .video-controls .video-time {
+  display: none;
+}
+.video .video-controls .video-time span {
+  display: inline-block;
+}
+.video .video-controls .video-time .video-time__current {
+  display: none;
+}
+.video .video-controls .video-mute {
+  display: none;
+}
+.video .video-controls .video-seek .video-progress-bar input {
+  width: 100%;
+}
+.video .video-controls .video-fullscreen {
+  position: absolute;
+  left: 0;
+}
 .itemListChat {
   padding: 0.3em 1em 0.3em 1em;
   border-radius: 5px;

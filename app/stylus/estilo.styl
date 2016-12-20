@@ -67,6 +67,41 @@ footer
   right 0
   clear both
 
+.btnPanic 
+  width: 25%;
+  height: 7em;
+  position: fixed;
+  z-index: 1000;
+  top: 0;
+  background: #ccc;
+  opacity: 0.3
+
+.imgMessage
+  width: 100%
+
+.video 
+  video 
+    width: 100%
+  .video-controls
+    .video-play
+      display: block;
+      width: 30px;
+      height: 27px;
+    .video-time
+      display: none
+      span 
+        display: inline-block
+      .video-time__current
+        display: none
+    .video-mute
+      display: none
+    .video-seek
+      .video-progress-bar
+        input 
+          width:100%
+    .video-fullscreen
+      position: absolute
+      left: 0
 
 
 .itemListChat
@@ -77,6 +112,7 @@ footer
   width 80%
   text-align right
   margin-left auto
+
   span
     display block
     color #ccc
@@ -131,6 +167,7 @@ footer
       color #222
       margin-bottom: 40px
       background: #eee;
+
     .inputChat
       position: fixed
       width:  50%

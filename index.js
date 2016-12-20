@@ -28,5 +28,10 @@ io.on('connection',(socket) => {
 		console.log("mensaje del socket ")
 		io.emit('mensaje',msg)
 	})
+
+	socket.on('clear', (data) => {
+		console.log('clear messaje')
+		io.emit('clear', data)
+	})
 })
 
