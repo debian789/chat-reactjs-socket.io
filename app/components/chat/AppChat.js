@@ -3,9 +3,10 @@ import ListChat from './ListChat';
 import InputMensaje from './InputMensaje';
 import uid from 'uid';
 import io from 'socket.io-client';
-
+import {defaultUrlSocket}  from '../../commons/Constans'
 
 export default class AppChat extends React.Component{
+
 
 	constructor(props){
 		super(props);
@@ -14,13 +15,10 @@ export default class AppChat extends React.Component{
 		this.clearMessage =this.clearMessage.bind(this);
 	}
 
-
 	componentWillMount(){
 
 		// Url de escucha de socket.io, el cliente con  el server
-		//this.socket = io('https://chat-reactjs.herokuapp.com');
-		this.socket = io('http://192.168.1.104:3000');
-		//this.socket = io('http://localhost:3000');
+		this.socket = io(deafultUrlSocket);
 
 		//Esta pendiente de recibir informacion desde el server
 		this.socket.on('mensaje',(mgs) => {
@@ -37,8 +35,6 @@ export default class AppChat extends React.Component{
 		let userUrl = this.props.params.user;
 
 		this.setState({user:userUrl});
-
-
 	}
 
 
@@ -64,8 +60,6 @@ export default class AppChat extends React.Component{
 		debugger
 		this.socket.emit('clear',"clear")
 	}
-
-
 
 	render(){
 		return <div>
