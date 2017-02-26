@@ -18,18 +18,18 @@ export default class AppChat extends React.Component {
     componentWillMount() {
 
         // Url de escucha de socket.io, el cliente con  el server
-        this.socket = io(deafultUrlSocket);
+        this.socket = io(defaultUrlSocket);
 
         //Esta pendiente de recibir informacion desde el server
         this.socket.on('mensaje', (mgs) => {
             if (mgs.user != this.state.user) {
                 this.newMensaje(mgs)
             }
-        })
+        });
 
         this.socket.on('clear', (data) => {
             this.setState({mensajes: []})
-        })
+        });
 
         //Obtiene los parametros que se pasaron por url
         let userUrl = this.props.params.user;

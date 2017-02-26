@@ -3,17 +3,22 @@ import React from 'react';
 
 export default class InputMensaje extends React.Component {
 
-    focus(e) {
-        this.props.onSendMensaje.call(null, {mensaje: this.textInput.value})
-        this.textInput.value = "";
-        e.preventDefault()
+    sendData(event) {
+        if (event.target.value) {
+            this.props.onSendMensaje.call(null, {mensaje: event.target.value})
+        }
+        event.target.value = "";
     }
 
-    onClick(evento) {
+    focus(event) {
+        this.sendData(event)
+        event.preventDefault()
+    }
+
+    onClick(event) {
         //13 Corresponde a la tecla Enter
-        if (evento.keyCode == 13) {
-            this.props.onSendMensaje.call(null, {mensaje: evento.target.value})
-            evento.target.value = "";
+        if (event.keyCode == 13) {
+            this.sendData(event)
         }
 
     }

@@ -5,6 +5,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var defaultUrlSocket = exports.defaultUrlSocket = 'http://192.168.0.129:3000';
+// 'https://chat-reactjs.herokuapp.com'
 
 },{}],2:[function(require,module,exports){
 'use strict';
@@ -40,40 +41,40 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 var RouteHandler = _reactRouter.Router.RouteHandler;
 
 var App = function (_React$Component) {
-   _inherits(App, _React$Component);
+    _inherits(App, _React$Component);
 
-   function App() {
-      _classCallCheck(this, App);
+    function App() {
+        _classCallCheck(this, App);
 
-      return _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).apply(this, arguments));
-   }
+        return _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).apply(this, arguments));
+    }
 
-   _createClass(App, [{
-      key: 'render',
+    _createClass(App, [{
+        key: 'render',
 
-      //			<h1 className="titulo">Chat con - React.js y socket.io</h1>
-      value: function render() {
-         return _react2.default.createElement(
-            'div',
-            null,
-            this.props.children
-         );
-      }
-   }]);
+        //			<h1 className="titulo">Chat con - React.js y socket.io</h1>
+        value: function render() {
+            return _react2.default.createElement(
+                'div',
+                null,
+                this.props.children
+            );
+        }
+    }]);
 
-   return App;
+    return App;
 }(_react2.default.Component);
 
 _reactDom2.default.render(_react2.default.createElement(
-   _reactRouter.Router,
-   { history: _reactRouter.hashHistory },
-   _react2.default.createElement(
-      _reactRouter.Route,
-      { path: '/', component: App },
-      _react2.default.createElement(_reactRouter.IndexRoute, { component: _Ingreso2.default }),
-      _react2.default.createElement(_reactRouter.Route, { path: 'ingreso', component: _Ingreso2.default }),
-      _react2.default.createElement(_reactRouter.Route, { path: 'chat/:user', component: _AppChat2.default })
-   )
+    _reactRouter.Router,
+    { history: _reactRouter.hashHistory },
+    _react2.default.createElement(
+        _reactRouter.Route,
+        { path: '/', component: App },
+        _react2.default.createElement(_reactRouter.IndexRoute, { component: _Ingreso2.default }),
+        _react2.default.createElement(_reactRouter.Route, { path: 'ingreso', component: _Ingreso2.default }),
+        _react2.default.createElement(_reactRouter.Route, { path: 'chat/:user', component: _AppChat2.default })
+    )
 ), document.getElementById('container'));
 
 //Configuracion de las rutas de la aplicacion 
@@ -92,7 +93,7 @@ _reactDom2.default.render(_react2.default.createElement(
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
-	value: true
+    value: true
 });
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -128,97 +129,94 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 var AppChat = function (_React$Component) {
-	_inherits(AppChat, _React$Component);
+    _inherits(AppChat, _React$Component);
 
-	function AppChat(props) {
-		_classCallCheck(this, AppChat);
+    function AppChat(props) {
+        _classCallCheck(this, AppChat);
 
-		var _this = _possibleConstructorReturn(this, (AppChat.__proto__ || Object.getPrototypeOf(AppChat)).call(this, props));
+        var _this = _possibleConstructorReturn(this, (AppChat.__proto__ || Object.getPrototypeOf(AppChat)).call(this, props));
 
-		_this.state = { mensajes: [], user: '' };
-		_this.sendMensaje = _this.sendMensaje.bind(_this);
-		_this.clearMessage = _this.clearMessage.bind(_this);
-		return _this;
-	}
+        _this.state = { mensajes: [], user: '' };
+        _this.sendMensaje = _this.sendMensaje.bind(_this);
+        _this.clearMessage = _this.clearMessage.bind(_this);
+        return _this;
+    }
 
-	_createClass(AppChat, [{
-		key: 'componentWillMount',
-		value: function componentWillMount() {
-			var _this2 = this;
+    _createClass(AppChat, [{
+        key: 'componentWillMount',
+        value: function componentWillMount() {
+            var _this2 = this;
 
-			// Url de escucha de socket.io, el cliente con  el server
-			//this.socket = io('https://chat-reactjs.herokuapp.com');
-			// this.socket = io('http://192.168.0.129:3000');
-			this.socket = (0, _socket2.default)(deafultUrlSocket);
-			//this.socket = io('http://localhost:3000');
+            // Url de escucha de socket.io, el cliente con  el server
+            this.socket = (0, _socket2.default)(_Constans.defaultUrlSocket);
 
-			//Esta pendiente de recibir informacion desde el server
-			this.socket.on('mensaje', function (mgs) {
-				if (mgs.user != _this2.state.user) {
-					_this2.newMensaje(mgs);
-				}
-			});
+            //Esta pendiente de recibir informacion desde el server
+            this.socket.on('mensaje', function (mgs) {
+                if (mgs.user != _this2.state.user) {
+                    _this2.newMensaje(mgs);
+                }
+            });
 
-			this.socket.on('clear', function (data) {
-				_this2.setState({ mensajes: [] });
-			});
+            this.socket.on('clear', function (data) {
+                _this2.setState({ mensajes: [] });
+            });
 
-			//Obtiene los parametros que se pasaron por url 
-			var userUrl = this.props.params.user;
+            //Obtiene los parametros que se pasaron por url
+            var userUrl = this.props.params.user;
 
-			this.setState({ user: userUrl });
-		}
-	}, {
-		key: 'sendMensaje',
-		value: function sendMensaje(mensaje) {
-			var mensajeEnviar = { mensaje: mensaje.mensaje, user: this.state.user, key: (0, _uid2.default)() };
-			var mensajeInsertar = { mensaje: mensaje.mensaje, user: this.state.user, key: (0, _uid2.default)(), estilo: 'itemListChat' };
-			this.newMensaje(mensajeInsertar);
+            this.setState({ user: userUrl });
+        }
+    }, {
+        key: 'sendMensaje',
+        value: function sendMensaje(mensaje) {
+            var mensajeEnviar = { mensaje: mensaje.mensaje, user: this.state.user, key: (0, _uid2.default)() };
+            var mensajeInsertar = { mensaje: mensaje.mensaje, user: this.state.user, key: (0, _uid2.default)(), estilo: 'itemListChat' };
+            this.newMensaje(mensajeInsertar);
 
-			//Envia un mensaje al server, este se encarga de reenviarlo a todos
-			this.socket.emit('mensaje', mensajeEnviar);
-		}
-	}, {
-		key: 'newMensaje',
-		value: function newMensaje(mensaje) {
-			this.state.mensajes.push(mensaje);
-			var mensajes = this.state.mensajes;
-			// mensaje.mensaje.split('.')[mensaje.mensaje.split('.').length -1 ]
-			// mensaje.mensaje.split('.').indexOf("jpg")
-			this.setState({ mensajes: mensajes });
-		}
-	}, {
-		key: 'clearMessage',
-		value: function clearMessage(data) {
-			debugger;
-			this.socket.emit('clear', "clear");
-		}
-	}, {
-		key: 'render',
-		value: function render() {
-			return _react2.default.createElement(
-				'div',
-				null,
-				_react2.default.createElement(
-					'a',
-					{ href: '#', className: 'salir' },
-					'Salir'
-				),
-				_react2.default.createElement(
-					'div',
-					{ className: 'contenedorChant' },
-					_react2.default.createElement(
-						'div',
-						{ className: 'cuadroChat' },
-						_react2.default.createElement(_ListChat2.default, { conten: this.state.mensajes, onClearMessage: this.clearMessage }),
-						_react2.default.createElement(_InputMensaje2.default, { onSendMensaje: this.sendMensaje })
-					)
-				)
-			);
-		}
-	}]);
+            //Envia un mensaje al server, este se encarga de reenviarlo a todos
+            this.socket.emit('mensaje', mensajeEnviar);
+        }
+    }, {
+        key: 'newMensaje',
+        value: function newMensaje(mensaje) {
+            this.state.mensajes.push(mensaje);
+            var mensajes = this.state.mensajes;
+            // mensaje.mensaje.split('.')[mensaje.mensaje.split('.').length -1 ]
+            // mensaje.mensaje.split('.').indexOf("jpg")
+            this.setState({ mensajes: mensajes });
+        }
+    }, {
+        key: 'clearMessage',
+        value: function clearMessage(data) {
+            debugger;
+            this.socket.emit('clear', "clear");
+        }
+    }, {
+        key: 'render',
+        value: function render() {
+            return _react2.default.createElement(
+                'div',
+                null,
+                _react2.default.createElement(
+                    'a',
+                    { href: '#', className: 'salir' },
+                    'Salir'
+                ),
+                _react2.default.createElement(
+                    'div',
+                    { className: 'contenedorChant' },
+                    _react2.default.createElement(
+                        'div',
+                        { className: 'cuadroChat' },
+                        _react2.default.createElement(_ListChat2.default, { conten: this.state.mensajes, onClearMessage: this.clearMessage }),
+                        _react2.default.createElement(_InputMensaje2.default, { onSendMensaje: this.sendMensaje })
+                    )
+                )
+            );
+        }
+    }]);
 
-	return AppChat;
+    return AppChat;
 }(_react2.default.Component);
 
 exports.default = AppChat;
@@ -227,7 +225,7 @@ exports.default = AppChat;
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
-	value: true
+    value: true
 });
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -245,56 +243,62 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 var InputMensaje = function (_React$Component) {
-	_inherits(InputMensaje, _React$Component);
+    _inherits(InputMensaje, _React$Component);
 
-	function InputMensaje() {
-		_classCallCheck(this, InputMensaje);
+    function InputMensaje() {
+        _classCallCheck(this, InputMensaje);
 
-		return _possibleConstructorReturn(this, (InputMensaje.__proto__ || Object.getPrototypeOf(InputMensaje)).apply(this, arguments));
-	}
+        return _possibleConstructorReturn(this, (InputMensaje.__proto__ || Object.getPrototypeOf(InputMensaje)).apply(this, arguments));
+    }
 
-	_createClass(InputMensaje, [{
-		key: "focus",
-		value: function focus(e) {
-			this.props.onSendMensaje.call(null, { mensaje: this.textInput.value });
-			this.textInput.value = "";
-			e.preventDefault();
-		}
-	}, {
-		key: "onClick",
-		value: function onClick(evento) {
-			//13 Corresponde a la tecla Enter
-			if (evento.keyCode == 13) {
-				this.props.onSendMensaje.call(null, { mensaje: evento.target.value });
-				evento.target.value = "";
-			}
-		}
-	}, {
-		key: "render",
-		value: function render() {
-			var _this2 = this;
+    _createClass(InputMensaje, [{
+        key: "sendData",
+        value: function sendData(event) {
+            if (event.target.value) {
+                this.props.onSendMensaje.call(null, { mensaje: event.target.value });
+            }
+            event.target.value = "";
+        }
+    }, {
+        key: "focus",
+        value: function focus(event) {
+            this.sendData(event);
+            event.preventDefault();
+        }
+    }, {
+        key: "onClick",
+        value: function onClick(event) {
+            //13 Corresponde a la tecla Enter
+            if (event.keyCode == 13) {
+                this.sendData(event);
+            }
+        }
+    }, {
+        key: "render",
+        value: function render() {
+            var _this2 = this;
 
-			return _react2.default.createElement(
-				"div",
-				{ className: "inputChat" },
-				_react2.default.createElement("input", {
-					type: "text",
-					placeholder: "Escribe un mensaje...",
-					onKeyDown: this.onClick.bind(this),
-					ref: function ref(input) {
-						_this2.textInput = input;
-					}
-				}),
-				_react2.default.createElement(
-					"button",
-					{ onClick: this.focus.bind(this) },
-					" > "
-				)
-			);
-		}
-	}]);
+            return _react2.default.createElement(
+                "div",
+                { className: "inputChat" },
+                _react2.default.createElement("input", {
+                    type: "text",
+                    placeholder: "Escribe un mensaje...",
+                    onKeyDown: this.onClick.bind(this),
+                    ref: function ref(input) {
+                        _this2.textInput = input;
+                    }
+                }),
+                _react2.default.createElement(
+                    "button",
+                    { onClick: this.focus.bind(this) },
+                    " > "
+                )
+            );
+        }
+    }]);
 
-	return InputMensaje;
+    return InputMensaje;
 }(_react2.default.Component);
 
 exports.default = InputMensaje;
@@ -303,7 +307,7 @@ exports.default = InputMensaje;
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
-	value: true
+    value: true
 });
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -325,31 +329,31 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 var ItemListChat = function (_React$Component) {
-	_inherits(ItemListChat, _React$Component);
+    _inherits(ItemListChat, _React$Component);
 
-	function ItemListChat() {
-		_classCallCheck(this, ItemListChat);
+    function ItemListChat() {
+        _classCallCheck(this, ItemListChat);
 
-		return _possibleConstructorReturn(this, (ItemListChat.__proto__ || Object.getPrototypeOf(ItemListChat)).apply(this, arguments));
-	}
+        return _possibleConstructorReturn(this, (ItemListChat.__proto__ || Object.getPrototypeOf(ItemListChat)).apply(this, arguments));
+    }
 
-	_createClass(ItemListChat, [{
-		key: 'render',
-		value: function render() {
-			return _react2.default.createElement(
-				'div',
-				{ className: this.props.estiloItem },
-				_react2.default.createElement(
-					'span',
-					null,
-					this.props.user
-				),
-				_react2.default.createElement(_itemDinamic2.default, { mensaje: this.props.mensaje })
-			);
-		}
-	}]);
+    _createClass(ItemListChat, [{
+        key: 'render',
+        value: function render() {
+            return _react2.default.createElement(
+                'div',
+                { className: this.props.estiloItem },
+                _react2.default.createElement(
+                    'span',
+                    null,
+                    this.props.user
+                ),
+                _react2.default.createElement(_itemDinamic2.default, { mensaje: this.props.mensaje })
+            );
+        }
+    }]);
 
-	return ItemListChat;
+    return ItemListChat;
 }(_react2.default.Component);
 
 exports.default = ItemListChat;
@@ -361,7 +365,7 @@ ItemListChat.defaultProps = { estiloItem: "itemListChat2" };
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
-	value: true
+    value: true
 });
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -383,35 +387,36 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 var ListChat = function (_React$Component) {
-	_inherits(ListChat, _React$Component);
+    _inherits(ListChat, _React$Component);
 
-	function ListChat() {
-		_classCallCheck(this, ListChat);
+    function ListChat() {
+        _classCallCheck(this, ListChat);
 
-		return _possibleConstructorReturn(this, (ListChat.__proto__ || Object.getPrototypeOf(ListChat)).apply(this, arguments));
-	}
+        return _possibleConstructorReturn(this, (ListChat.__proto__ || Object.getPrototypeOf(ListChat)).apply(this, arguments));
+    }
 
-	_createClass(ListChat, [{
-		key: 'onClickClear',
-		value: function onClickClear(evento) {
-			this.props.onClearMessage.call(null, "message");
-		}
-	}, {
-		key: 'render',
-		value: function render() {
+    _createClass(ListChat, [{
+        key: 'onClickClear',
+        value: function onClickClear(evento) {
+            this.props.onClearMessage.call(null, "message");
+        }
+    }, {
+        key: 'render',
+        value: function render() {
 
-			return _react2.default.createElement(
-				'div',
-				{ className: 'panelListChat' },
-				_react2.default.createElement('div', { className: 'btnPanic', onClick: this.onClickClear.bind(this) }),
-				this.props.conten.map(function (dato) {
-					return _react2.default.createElement(_ItemListChat2.default, { user: dato.user, mensaje: dato.mensaje, key: dato.key, estiloItem: dato.estilo });
-				})
-			);
-		}
-	}]);
+            return _react2.default.createElement(
+                'div',
+                { className: 'panelListChat' },
+                _react2.default.createElement('div', { className: 'btnPanic', onClick: this.onClickClear.bind(this) }),
+                this.props.conten.map(function (dato) {
+                    return _react2.default.createElement(_ItemListChat2.default, { user: dato.user, mensaje: dato.mensaje, key: dato.key,
+                        estiloItem: dato.estilo });
+                })
+            );
+        }
+    }]);
 
-	return ListChat;
+    return ListChat;
 }(_react2.default.Component);
 
 exports.default = ListChat;
@@ -507,19 +512,19 @@ exports.default = ItemDinamic;
 ItemDinamic.defaultProps = { estiloItem: "itemDinamic" };
 
 },{"react":274,"react-html5video":216}],8:[function(require,module,exports){
-'use strict';
+"use strict";
 
 Object.defineProperty(exports, "__esModule", {
-	value: true
+    value: true
 });
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _react = require('react');
+var _react = require("react");
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactRouter = require('react-router');
+var _reactRouter = require("react-router");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -530,48 +535,47 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 var Ingreso = function (_React$Component) {
-	_inherits(Ingreso, _React$Component);
+    _inherits(Ingreso, _React$Component);
 
-	function Ingreso(props) {
-		_classCallCheck(this, Ingreso);
+    function Ingreso(props) {
+        _classCallCheck(this, Ingreso);
 
-		var _this = _possibleConstructorReturn(this, (Ingreso.__proto__ || Object.getPrototypeOf(Ingreso)).call(this, props));
+        var _this = _possibleConstructorReturn(this, (Ingreso.__proto__ || Object.getPrototypeOf(Ingreso)).call(this, props));
 
-		_this.state = {
-			nameUser: ''
-		};
-		_this.handleChange = _this.handleChange.bind(_this);
-		return _this;
-	}
+        _this.state = {
+            nameUser: ""
+        };
+        _this.handleChange = _this.handleChange.bind(_this);
+        return _this;
+    }
 
-	_createClass(Ingreso, [{
-		key: 'handleChange',
-		value: function handleChange(event) {
-			event.preventDefault();
-			this.setState({ nameUser: event.target.value });
-		}
-	}, {
-		key: 'render',
-		value: function render() {
-			return _react2.default.createElement(
-				'div',
-				{ className: 'inicioSession' },
-				_react2.default.createElement('input', { type: 'text', placeholder: 'Name', onChange: this.handleChange }),
-				_react2.default.createElement(
-					_reactRouter.Link,
-					{ to: { pathname: '/chat/' + this.state.nameUser, query: { showAge: true } } },
-					' ',
-					_react2.default.createElement(
-						'button',
-						null,
-						' Ingresar '
-					)
-				)
-			);
-		}
-	}]);
+    _createClass(Ingreso, [{
+        key: "handleChange",
+        value: function handleChange(event) {
+            event.preventDefault();
+            this.setState({ nameUser: event.target.value });
+        }
+    }, {
+        key: "render",
+        value: function render() {
+            return _react2.default.createElement(
+                "div",
+                { className: "inicioSession" },
+                _react2.default.createElement("input", { type: "text", placeholder: "Name", onChange: this.handleChange }),
+                _react2.default.createElement(
+                    _reactRouter.Link,
+                    { to: { pathname: '/chat/' + this.state.nameUser, query: { showAge: true } } },
+                    _react2.default.createElement(
+                        "button",
+                        null,
+                        " Ingresar"
+                    )
+                )
+            );
+        }
+    }]);
 
-	return Ingreso;
+    return Ingreso;
 }(_react2.default.Component);
 
 exports.default = Ingreso;
