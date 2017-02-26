@@ -1,24 +1,25 @@
 import React from 'react';
 import ItemListChat from './ItemListChat';
 
-export default class ListChat extends React.Component{
+export default class ListChat extends React.Component {
 
-	onClickClear (evento) {
-		this.props.onClearMessage.call(null,"message")
-	}
+    onClickClear(evento) {
+        this.props.onClearMessage.call(null, "message")
+    }
 
-	render(){
-		
-		return <div className="panelListChat">
-				<div className="btnPanic" onClick={this.onClickClear.bind(this)}></div>
-				{
-					this.props.conten.map((dato) => {
-						return <ItemListChat user={dato.user} mensaje={dato.mensaje} key={dato.key} estiloItem={dato.estilo}/>
-					})
-				}
-			</div>
-		}
+    render() {
+
+        return <div className="panelListChat">
+            <div className="btnPanic" onClick={this.onClickClear.bind(this)}></div>
+            {
+                this.props.conten.map((dato) => {
+                    return <ItemListChat user={dato.user} mensaje={dato.mensaje} key={dato.key}
+                                         estiloItem={dato.estilo}/>
+                })
+            }
+        </div>
+    }
 }
 
 
-ListChat.defaultProps = {conten:[]}
+ListChat.defaultProps = {conten: []}

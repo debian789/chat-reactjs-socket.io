@@ -1,31 +1,31 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Router, Route, Link, browserHistory, IndexRoute, hashHistory  } from 'react-router'
+import {Router, Route, Link, browserHistory, IndexRoute, hashHistory} from 'react-router'
 
 import Ingreso from './session/Ingreso';
 import AppChat from './chat/AppChat';
 
 let RouteHandler = Router.RouteHandler;
 
-class App extends React.Component{
+class App extends React.Component {
 //			<h1 className="titulo">Chat con - React.js y socket.io</h1>
-	render(){
-	return <div>
-			{this.props.children}
-		</div>
-	}
+    render() {
+        return <div>
+            {this.props.children}
+        </div>
+    }
 }
 
 
 ReactDOM.render((
-   <Router history = {hashHistory}>
-      <Route path = "/" component = {App}>
-         <IndexRoute component = {Ingreso} />
-         <Route path = "ingreso" component = {Ingreso} />
-         <Route path = "chat/:user" component = {AppChat} />
-      </Route>
-   </Router>
-	
+    <Router history={hashHistory}>
+        <Route path="/" component={App}>
+            <IndexRoute component={Ingreso}/>
+            <Route path="ingreso" component={Ingreso}/>
+            <Route path="chat/:user" component={AppChat}/>
+        </Route>
+    </Router>
+
 ), document.getElementById('container'))
 
 
