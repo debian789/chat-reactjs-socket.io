@@ -468,29 +468,25 @@ var ItemDinamic = function (_React$Component) {
         value: function componentWillMount() {
             console.log(this.props.mensaje);
 
-            var elemento = _react2.default.createElement(
-                'p',
-                null,
-                'aaaaaa'
-            );
+            var element = _react2.default.createElement('p', null);
             if (this.props.mensaje.split('.').indexOf("jpg") != -1) {
-                elemento = _react2.default.createElement('img', { src: this.props.mensaje });
+                element = _react2.default.createElement('img', { src: this.props.mensaje });
             } else if (this.props.mensaje.split('.').indexOf("mp4") != -1) {
-                elemento = _react2.default.createElement(
+                element = _react2.default.createElement(
                     _reactHtml5video2.default,
                     { controls: true, autoPlay: true },
                     _react2.default.createElement('source', { src: this.props.mensaje, type: 'video/mp4' })
                 );
             } else if (this.props.mensaje.split('.').indexOf("gif") != -1) {
-                elemento = _react2.default.createElement('img', { className: 'imgMessage', src: this.props.mensaje });
+                element = _react2.default.createElement('img', { className: 'imgMessage', src: this.props.mensaje });
             } else {
-                elemento = _react2.default.createElement(
+                element = _react2.default.createElement(
                     'p',
                     null,
                     this.props.mensaje
                 );
             }
-            this.setState({ stateMensaje: elemento });
+            this.setState({ stateMensaje: element });
         }
     }, {
         key: 'render',

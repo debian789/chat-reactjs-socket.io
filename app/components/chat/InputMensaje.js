@@ -11,7 +11,7 @@ export default class InputMensaje extends React.Component {
     }
 
     focus(event) {
-        this.sendData(event)
+        this.sendData(event);
         event.preventDefault()
     }
 

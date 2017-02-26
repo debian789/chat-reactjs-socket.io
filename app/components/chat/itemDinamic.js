@@ -14,20 +14,20 @@ export default class ItemDinamic extends React.Component {
         console.log(this.props.mensaje)
 
 
-        var elemento = <p>aaaaaa</p>
+        var element = <p></p>
         if (this.props.mensaje.split('.').indexOf("jpg") != -1) {
-            elemento = <img src={this.props.mensaje}/>
+            element = <img src={this.props.mensaje}/>
         } else if (this.props.mensaje.split('.').indexOf("mp4") != -1) {
-            elemento = <Video controls autoPlay>
+            element = <Video controls autoPlay>
                 <source src={this.props.mensaje} type="video/mp4"/>
 
             </Video>
         } else if (this.props.mensaje.split('.').indexOf("gif") != -1) {
-            elemento = <img className="imgMessage" src={this.props.mensaje}/>
+            element = <img className="imgMessage" src={this.props.mensaje}/>
         } else {
-            elemento = <p>{this.props.mensaje}</p>
+            element = <p>{this.props.mensaje}</p>
         }
-        this.setState({stateMensaje: elemento})
+        this.setState({stateMensaje: element})
     }
 
     render() {
