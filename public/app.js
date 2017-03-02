@@ -539,34 +539,54 @@ var Ingreso = function (_React$Component) {
         var _this = _possibleConstructorReturn(this, (Ingreso.__proto__ || Object.getPrototypeOf(Ingreso)).call(this, props));
 
         _this.state = {
-            nameUser: ""
+            nameUser: "",
+            messajeError: ''
         };
         _this.handleChange = _this.handleChange.bind(_this);
+        _this.handleClick = _this.handleClick.bind(_this);
         return _this;
     }
 
     _createClass(Ingreso, [{
         key: "handleChange",
         value: function handleChange(event) {
+            debugger;
             event.preventDefault();
-            this.setState({ nameUser: event.target.value });
+            if (event.target.value) {
+                this.setState({ nameUser: event.target.value });
+                this.setState({ messajeError: '' });
+            }
+        }
+    }, {
+        key: "handleClick",
+        value: function handleClick(event) {
+            if (!this.state.nameUser) {
+                event.preventDefault();
+                this.setState({ messajeError: _react2.default.createElement(
+                        "span",
+                        null,
+                        " falta ingresar un nombre"
+                    ) });
+            }
         }
     }, {
         key: "render",
         value: function render() {
+
             return _react2.default.createElement(
                 "div",
                 { className: "inicioSession" },
                 _react2.default.createElement("input", { type: "text", placeholder: "Name", onChange: this.handleChange }),
                 _react2.default.createElement(
                     _reactRouter.Link,
-                    { to: { pathname: '/chat/' + this.state.nameUser, query: { showAge: true } } },
+                    { to: { pathname: '/chat/' + this.state.nameUser, query: { showAge: true } }, onClick: this.handleClick },
                     _react2.default.createElement(
                         "button",
                         null,
                         " Ingresar"
                     )
-                )
+                ),
+                this.state.messajeError
             );
         }
     }]);
@@ -27705,6 +27725,7 @@ var Link = _react2.default.createClass({
     };
   },
   handleClick: function handleClick(event) {
+
     if (this.props.onClick) this.props.onClick(event);
 
     if (event.defaultPrevented) return;
