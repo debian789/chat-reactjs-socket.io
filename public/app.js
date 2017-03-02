@@ -550,11 +550,12 @@ var Ingreso = function (_React$Component) {
     _createClass(Ingreso, [{
         key: "handleChange",
         value: function handleChange(event) {
-            debugger;
             event.preventDefault();
             if (event.target.value) {
                 this.setState({ nameUser: event.target.value });
                 this.setState({ messajeError: '' });
+            } else {
+                this.setState({ nameUser: '' });
             }
         }
     }, {
@@ -564,7 +565,7 @@ var Ingreso = function (_React$Component) {
                 event.preventDefault();
                 this.setState({ messajeError: _react2.default.createElement(
                         "span",
-                        null,
+                        { className: "validacionName" },
                         " falta ingresar un nombre"
                     ) });
             }

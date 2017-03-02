@@ -328,6 +328,11 @@ footer a {
   line-height: 3em;
   padding: 0;
 }
+.inicioSession .validacionName {
+  display: block;
+  margin-top: 0.5em;
+  color: #fff;
+}
 @media all and (max-width: 700px) {
   .contenedorChant .cuadroChat {
     width: 90%;

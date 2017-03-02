@@ -14,18 +14,19 @@ export default class Ingreso extends React.Component {
     }
 
     handleChange(event) {
-    debugger
         event.preventDefault();
         if (event.target.value) {
             this.setState({nameUser: event.target.value})
             this.setState({messajeError: ''})
+        } else {
+            this.setState({nameUser: ''})
         }
     }
 
     handleClick (event) {
         if (!this.state.nameUser) {
             event.preventDefault();
-             this.setState({messajeError: <span > falta ingresar un nombre</span>})
+             this.setState({messajeError: <span className="validacionName" > falta ingresar un nombre</span>})
 
         }
     }
