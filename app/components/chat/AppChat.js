@@ -33,7 +33,6 @@ export default class AppChat extends React.Component {
 
         //Obtiene los parametros que se pasaron por url
 
-        //let userUrl = this.props.params.user;
         let user = this.props.location.state.nameUser;
         let sala = this.props.location.state.sala;
 

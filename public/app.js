@@ -163,7 +163,6 @@ var AppChat = function (_React$Component) {
 
             //Obtiene los parametros que se pasaron por url
 
-            //let userUrl = this.props.params.user;
             var user = this.props.location.state.nameUser;
             var sala = this.props.location.state.sala;
 
@@ -594,8 +593,8 @@ var Ingreso = function (_React$Component) {
             return _react2.default.createElement(
                 "div",
                 { className: "inicioSession" },
-                _react2.default.createElement("input", { type: "text", placeholder: "Name", onChange: this.handleChange }),
-                _react2.default.createElement("input", { type: "text", placeholder: "Sala", onChange: this.handleSala }),
+                _react2.default.createElement("input", { type: "text", placeholder: "Nombre", onChange: this.handleChange }),
+                _react2.default.createElement("input", { type: "text", placeholder: "Palabra clave", onChange: this.handleSala }),
                 _react2.default.createElement(
                     _reactRouter.Link,
                     {

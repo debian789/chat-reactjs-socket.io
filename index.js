@@ -26,7 +26,7 @@ io.on('connection', (socket) => {
 
     socket.on('clear', (data) => {
         console.log('clear messaje');
-        io.emit('clear', data)
+        socket.broadcast.to(socket.sala).emit('clear', data)
     })
 
     socket.on('join', sala => {
