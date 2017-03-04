@@ -7,10 +7,12 @@ export default class Ingreso extends React.Component {
         super(props);
         this.state = {
             nameUser: "",
-            messajeError: ''
+            messajeError: '',
+            sala: ""
         };
         this.handleChange = this.handleChange.bind(this);
         this.handleClick = this.handleClick.bind(this);
+        this.handleSala = this.handleSala.bind(this);
     }
 
     handleChange(event) {
@@ -20,6 +22,15 @@ export default class Ingreso extends React.Component {
             this.setState({messajeError: ''})
         } else {
             this.setState({nameUser: ''})
+        }
+    }
+
+    handleSala(event) {
+        event.preventDefault
+        if (event.target.value) {
+            this.setState({sala:event.target.value})
+        } else {
+            this.setState({sala: ''})
         }
     }
 
@@ -37,8 +48,17 @@ export default class Ingreso extends React.Component {
 
         return <div className="inicioSession">
             <input type="text" placeholder="Name" onChange={this.handleChange}/>
+            <input type="text" placeholder="Sala" onChange={this.handleSala} />
 
-            <Link to={{pathname: '/chat/' + this.state.nameUser, query: {showAge: true}}}  onClick= {this.handleClick} >
+            <Link
+                to={{
+                    pathname: '/chat',
+                    query:{showAge: true },
+                    state:{nameUser: this.state.nameUser, sala: this.state.sala}
+                 }}
+
+                onClick= {this.handleClick} >
+
                 <button> Ingresar</button>
             </Link>
             {

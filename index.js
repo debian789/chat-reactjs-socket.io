@@ -21,12 +21,17 @@ const io = engine.listen(server);
 io.on('connection', (socket) => {
     socket.on('mensaje', (msg) => {
         console.log("mensaje del socket ");
-        io.emit('mensaje', msg)
+        socket.broadcast.to(socket.sala).emit('mensaje', msg)
     });
 
     socket.on('clear', (data) => {
         console.log('clear messaje');
         io.emit('clear', data)
+    })
+
+    socket.on('join', sala => {
+        socket.sala = sala
+        socket.join(sala)
     })
 });
 

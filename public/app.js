@@ -73,7 +73,7 @@ _reactDom2.default.render(_react2.default.createElement(
         { path: '/', component: App },
         _react2.default.createElement(_reactRouter.IndexRoute, { component: _Ingreso2.default }),
         _react2.default.createElement(_reactRouter.Route, { path: 'ingreso', component: _Ingreso2.default }),
-        _react2.default.createElement(_reactRouter.Route, { path: 'chat/:user', component: _AppChat2.default })
+        _react2.default.createElement(_reactRouter.Route, { path: 'chat', component: _AppChat2.default })
     )
 ), document.getElementById('container'));
 
@@ -136,7 +136,7 @@ var AppChat = function (_React$Component) {
 
         var _this = _possibleConstructorReturn(this, (AppChat.__proto__ || Object.getPrototypeOf(AppChat)).call(this, props));
 
-        _this.state = { mensajes: [], user: '' };
+        _this.state = { mensajes: [], user: '', sala: '' };
         _this.sendMensaje = _this.sendMensaje.bind(_this);
         _this.clearMessage = _this.clearMessage.bind(_this);
         return _this;
@@ -162,9 +162,15 @@ var AppChat = function (_React$Component) {
             });
 
             //Obtiene los parametros que se pasaron por url
-            var userUrl = this.props.params.user;
 
-            this.setState({ user: userUrl });
+            //let userUrl = this.props.params.user;
+            var user = this.props.location.state.nameUser;
+            var sala = this.props.location.state.sala;
+
+            this.setState({ user: user });
+            this.setState({ sala: sala });
+
+            this.socket.emit('join', sala);
         }
     }, {
         key: 'sendMensaje',
@@ -188,7 +194,6 @@ var AppChat = function (_React$Component) {
     }, {
         key: 'clearMessage',
         value: function clearMessage(data) {
-            debugger;
             this.socket.emit('clear', "clear");
         }
     }, {
@@ -540,10 +545,12 @@ var Ingreso = function (_React$Component) {
 
         _this.state = {
             nameUser: "",
-            messajeError: ''
+            messajeError: '',
+            sala: ""
         };
         _this.handleChange = _this.handleChange.bind(_this);
         _this.handleClick = _this.handleClick.bind(_this);
+        _this.handleSala = _this.handleSala.bind(_this);
         return _this;
     }
 
@@ -556,6 +563,16 @@ var Ingreso = function (_React$Component) {
                 this.setState({ messajeError: '' });
             } else {
                 this.setState({ nameUser: '' });
+            }
+        }
+    }, {
+        key: "handleSala",
+        value: function handleSala(event) {
+            event.preventDefault;
+            if (event.target.value) {
+                this.setState({ sala: event.target.value });
+            } else {
+                this.setState({ sala: '' });
             }
         }
     }, {
@@ -578,9 +595,17 @@ var Ingreso = function (_React$Component) {
                 "div",
                 { className: "inicioSession" },
                 _react2.default.createElement("input", { type: "text", placeholder: "Name", onChange: this.handleChange }),
+                _react2.default.createElement("input", { type: "text", placeholder: "Sala", onChange: this.handleSala }),
                 _react2.default.createElement(
                     _reactRouter.Link,
-                    { to: { pathname: '/chat/' + this.state.nameUser, query: { showAge: true } }, onClick: this.handleClick },
+                    {
+                        to: {
+                            pathname: '/chat',
+                            query: { showAge: true },
+                            state: { nameUser: this.state.nameUser, sala: this.state.sala }
+                        },
+
+                        onClick: this.handleClick },
                     _react2.default.createElement(
                         "button",
                         null,

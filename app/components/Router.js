@@ -22,7 +22,7 @@ ReactDOM.render((
         <Route path="/" component={App}>
             <IndexRoute component={Ingreso}/>
             <Route path="ingreso" component={Ingreso}/>
-            <Route path="chat/:user" component={AppChat}/>
+            <Route path="chat" component={AppChat}/>
         </Route>
     </Router>
 

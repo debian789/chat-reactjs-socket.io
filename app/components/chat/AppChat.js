@@ -10,7 +10,7 @@ export default class AppChat extends React.Component {
 
     constructor(props) {
         super(props);
-        this.state = {mensajes: [], user: ''}
+        this.state = {mensajes: [], user: '', sala: ''}
         this.sendMensaje = this.sendMensaje.bind(this);
         this.clearMessage = this.clearMessage.bind(this);
     }
@@ -32,9 +32,15 @@ export default class AppChat extends React.Component {
         });
 
         //Obtiene los parametros que se pasaron por url
-        let userUrl = this.props.params.user;
 
-        this.setState({user: userUrl});
+        //let userUrl = this.props.params.user;
+        let user = this.props.location.state.nameUser;
+        let sala = this.props.location.state.sala;
+
+        this.setState({user: user});
+        this.setState({sala: sala});
+
+        this.socket.emit('join', sala);
     }
 
 
@@ -57,7 +63,6 @@ export default class AppChat extends React.Component {
     }
 
     clearMessage(data) {
-        debugger
         this.socket.emit('clear', "clear")
     }
 
