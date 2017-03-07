@@ -101,7 +101,7 @@ section {
 }
 body {
   line-height: 1;
-  background: #222;
+  background: #01ada8;
 }
 ol,
 ul {
@@ -221,7 +221,7 @@ footer a {
 .contenedorChant {
   display: flex;
   border: 0px solid #00f;
-  background: #fff;
+  background: #01ada8;
   position: absolute;
   top: 0;
   bottom: 0;
@@ -308,27 +308,39 @@ footer a {
 }
 .inicioSession {
   border: 1px solid #fff;
-  border-radius: 5px;
-  background: #3c3c3c;
+  border-radius: 2px;
+  background: #e4e8eb;
+  box-shadow: 4px 5px 0px #06a29f;
   width: 30%;
-  margin: 2em auto;
-  padding: 3em;
+  margin: 3em auto;
+  padding: 1em 2em 2em 2em;
+}
+.inicioSession h1 {
+  text-align: center;
+  margin-bottom: 1em;
+  font-size: 1.5em;
+  color: #bbbfc2;
 }
 .inicioSession input[type=text] {
   width: 96%;
   display: inline-block;
+  border-radius: 5px;
   padding: 0 0 0 4%;
   border: 0;
   line-height: 3em;
-  margin-top: 0.5em;
+  margin-bottom: 0.5em;
 }
 .inicioSession button {
   display: inline-block;
   width: 100%;
+  border-radius: 5px;
   border: 0;
-  line-height: 3em;
+  line-height: 2.4em;
   padding: 0;
   margin-top: 0.5em;
+  background: #01ada8;
+  color: #f6fefa;
+  font-size: 1.2em;
 }
 .inicioSession .validacionName {
   display: block;

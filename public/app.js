@@ -593,6 +593,11 @@ var Ingreso = function (_React$Component) {
             return _react2.default.createElement(
                 "div",
                 { className: "inicioSession" },
+                _react2.default.createElement(
+                    "h1",
+                    null,
+                    "Chat"
+                ),
                 _react2.default.createElement("input", { type: "text", placeholder: "Nombre", onChange: this.handleChange }),
                 _react2.default.createElement("input", { type: "text", placeholder: "Palabra clave", onChange: this.handleSala }),
                 _react2.default.createElement(
