@@ -67,7 +67,6 @@ export default class AppChat extends React.Component {
 
     render() {
         return <div>
-            <a href="#" className="salir">Salir</a>
             <div className="contenedorChant">
                 <div className="cuadroChat">
                     <ListChat conten={this.state.mensajes} onClearMessage={this.clearMessage}/>

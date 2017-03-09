@@ -202,11 +202,6 @@ var AppChat = function (_React$Component) {
                 'div',
                 null,
                 _react2.default.createElement(
-                    'a',
-                    { href: '#', className: 'salir' },
-                    'Salir'
-                ),
-                _react2.default.createElement(
                     'div',
                     { className: 'contenedorChant' },
                     _react2.default.createElement(
@@ -412,6 +407,11 @@ var ListChat = function (_React$Component) {
                 'div',
                 { className: 'panelListChat' },
                 _react2.default.createElement('div', { className: 'btnPanic', onClick: this.onClickClear.bind(this) }),
+                _react2.default.createElement(
+                    'a',
+                    { href: '#', className: 'salir' },
+                    'Salir'
+                ),
                 this.props.conten.map(function (dato) {
                     return _react2.default.createElement(_ItemListChat2.default, { user: dato.user, mensaje: dato.mensaje, key: dato.key,
                         estiloItem: dato.estilo });
@@ -592,31 +592,35 @@ var Ingreso = function (_React$Component) {
 
             return _react2.default.createElement(
                 "div",
-                { className: "inicioSession" },
+                null,
                 _react2.default.createElement(
                     "h1",
                     null,
                     "Chat"
                 ),
-                _react2.default.createElement("input", { type: "text", placeholder: "Nombre", onChange: this.handleChange }),
-                _react2.default.createElement("input", { type: "text", placeholder: "Palabra clave", onChange: this.handleSala }),
                 _react2.default.createElement(
-                    _reactRouter.Link,
-                    {
-                        to: {
-                            pathname: '/chat',
-                            query: { showAge: true },
-                            state: { nameUser: this.state.nameUser, sala: this.state.sala }
-                        },
-
-                        onClick: this.handleClick },
+                    "div",
+                    { className: "inicioSession" },
+                    _react2.default.createElement("input", { type: "text", placeholder: "Nombre", onChange: this.handleChange }),
+                    _react2.default.createElement("input", { type: "text", placeholder: "Palabra clave", onChange: this.handleSala }),
                     _react2.default.createElement(
-                        "button",
-                        null,
-                        " Ingresar"
-                    )
-                ),
-                this.state.messajeError
+                        _reactRouter.Link,
+                        {
+                            to: {
+                                pathname: '/chat',
+                                query: { showAge: true },
+                                state: { nameUser: this.state.nameUser, sala: this.state.sala }
+                            },
+
+                            onClick: this.handleClick },
+                        _react2.default.createElement(
+                            "button",
+                            null,
+                            " Ingresar"
+                        )
+                    ),
+                    this.state.messajeError
+                )
             );
         }
     }]);

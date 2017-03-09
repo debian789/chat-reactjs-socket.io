@@ -46,27 +46,28 @@ export default class Ingreso extends React.Component {
     render() {
 
 
-        return <div className="inicioSession">
+        return <div>
             <h1>Chat</h1>
+            <div className="inicioSession">
+                <input type="text" placeholder="Nombre" onChange={this.handleChange}/>
+                <input type="text" placeholder="Palabra clave" onChange={this.handleSala} />
 
-            <input type="text" placeholder="Nombre" onChange={this.handleChange}/>
-            <input type="text" placeholder="Palabra clave" onChange={this.handleSala} />
+                <Link
+                    to={{
+                        pathname: '/chat',
+                        query:{showAge: true },
+                        state:{nameUser: this.state.nameUser, sala: this.state.sala}
+                     }}
 
-            <Link
-                to={{
-                    pathname: '/chat',
-                    query:{showAge: true },
-                    state:{nameUser: this.state.nameUser, sala: this.state.sala}
-                 }}
+                    onClick= {this.handleClick} >
 
-                onClick= {this.handleClick} >
+                    <button> Ingresar</button>
+                </Link>
+                {
+                    this.state.messajeError
+                }
 
-                <button> Ingresar</button>
-            </Link>
-            {
-                this.state.messajeError
-            }
-
+            </div>
         </div>
     }
 }

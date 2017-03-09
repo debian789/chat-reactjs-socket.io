@@ -139,17 +139,17 @@ footer a {
   margin-top: 1em;
 }
 .salir {
-  position: relative;
-  width: 50%;
-  margin: auto;
+  position: absolute;
+  width: 4em;
+  margin-left: auto;
   text-align: right;
-  display: block;
+  display: inline-block;
   color: #000;
-  left: -0.8em;
+  left: 0em;
+  top: 0.4em;
   right: 0;
   clear: both;
   z-index: 1003;
-  margin-top: 0.3em;
 }
 .btnPanic {
   width: 25%;
@@ -306,6 +306,13 @@ footer a {
   border: 0;
   background: #fff;
 }
+h1 {
+  text-align: center;
+  margin-bottom: 1em;
+  margin-top: 3em;
+  font-size: 2em;
+  color: #e0c737;
+}
 .inicioSession {
   border: 1px solid #fff;
   border-radius: 2px;
@@ -315,25 +322,30 @@ footer a {
   margin: 3em auto;
   padding: 1em 2em 2em 2em;
 }
-.inicioSession h1 {
-  text-align: center;
-  margin-bottom: 1em;
-  font-size: 1.5em;
-  color: #bbbfc2;
-}
 .inicioSession input[type=text] {
   width: 96%;
   display: inline-block;
-  border-radius: 5px;
+  border-radius: 6px;
   padding: 0 0 0 4%;
   border: 0;
+  font-size: 1em;
+  color: #b4b8bb;
   line-height: 3em;
   margin-bottom: 0.5em;
+}
+.inicioSession input[type=text]:hover {
+  border: 0px solid #f00;
+}
+.inicioSession input[type=text]:focus {
+  outline: none;
+}
+.inicioSession input[type=text]:placeholder {
+  color: #f00;
 }
 .inicioSession button {
   display: inline-block;
   width: 100%;
-  border-radius: 5px;
+  border-radius: 6px;
   border: 0;
   line-height: 2.4em;
   padding: 0;
@@ -342,10 +354,13 @@ footer a {
   color: #f6fefa;
   font-size: 1.2em;
 }
+.inicioSession button:focus {
+  outline: none;
+}
 .inicioSession .validacionName {
   display: block;
   margin-top: 0.5em;
-  color: #fff;
+  color: #019f9b;
 }
 @media all and (max-width: 700px) {
   .contenedorChant .cuadroChat {

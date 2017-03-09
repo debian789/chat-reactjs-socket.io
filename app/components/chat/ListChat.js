@@ -11,6 +11,8 @@ export default class ListChat extends React.Component {
 
         return <div className="panelListChat">
             <div className="btnPanic" onClick={this.onClickClear.bind(this)}></div>
+            <a href="#" className="salir">Salir</a>
+
             {
                 this.props.conten.map((dato) => {
                     return <ItemListChat user={dato.user} mensaje={dato.mensaje} key={dato.key}
