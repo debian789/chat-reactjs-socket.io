@@ -1,12 +1,32 @@
 import express from 'express';
 import http from 'http';
 import engine from 'socket.io'
+import multer from 'multer'
+import ext from 'file-extension'
+
+const storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+        cb(null, './uploads')
+    },
+    filename: function (req, file, cb) {
+        cb(null, +Date.now() + '.' + ext(file.originalname))
+    }
+});
+
+
+let upload = multer({storage: storage})
 
 
 const port = process.env.PORT || 3000;
 const app = express();
 
 app.use('/public', express.static(__dirname + '/public'));
+app.use('/uploads', express.static(__dirname + '/uploads'));
+
+app.post('/upload', upload.single('file'), function (req, res, next) {
+    // es.send(req.file)
+    res.json({file: req.file.path});
+})
 
 app.get('/', (req, res) => {
     res.sendFile(__dirname + '/index.html');

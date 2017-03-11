@@ -4,6 +4,7 @@ import InputMensaje from './InputMensaje';
 import uid from 'uid';
 import io from 'socket.io-client';
 import {defaultUrlSocket}  from '../../commons/Constans'
+import request from 'superagent';
 
 export default class AppChat extends React.Component {
 
@@ -13,6 +14,7 @@ export default class AppChat extends React.Component {
         this.state = {mensajes: [], user: '', sala: ''}
         this.sendMensaje = this.sendMensaje.bind(this);
         this.clearMessage = this.clearMessage.bind(this);
+        this.sendFile = this.sendFile.bind(this);
     }
 
     componentWillMount() {
@@ -65,11 +67,26 @@ export default class AppChat extends React.Component {
         this.socket.emit('clear', "clear")
     }
 
+    sendFile(event) {
+        let self = this;
+        request
+            .post('/upload')
+            .attach('file', event.target.files[0])
+            .end(function (err, res) {
+                debugger
+                if (!err) {
+                    self.sendMensaje({mensaje: res.body.file})
+
+                }
+            })
+    }
+
     render() {
         return <div>
             <div className="contenedorChant">
                 <div className="cuadroChat">
                     <ListChat conten={this.state.mensajes} onClearMessage={this.clearMessage}/>
+                    <input type="file" name="file" onChange={this.sendFile}/>
                     <InputMensaje onSendMensaje={this.sendMensaje}/>
                 </div>
             </div>
