@@ -508,7 +508,7 @@ var InputOptions = function (_React$Component) {
         _react2.default.createElement(
           "label",
           { htmlFor: "file" },
-          "Adjuntar imagen"
+          "Adjuntar archivo"
         )
       );
     }

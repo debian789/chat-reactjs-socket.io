@@ -277,11 +277,13 @@ footer a {
   padding-top: 6px;
   text-align: center;
   width: 50%;
+  cursor: pointer;
   display: inline-block;
   background: #ec7063;
   color: #fff;
 }
 .contenedorChant .cuadroChat .panelListChat .btnHeader .salir {
+  cursor: pointer;
   right: 0;
   padding-bottom: 6px;
   padding-top: 6px;
@@ -300,7 +302,6 @@ footer a {
   border: 0px solid #00f;
 }
 .inputChat input:focus {
-  border: 0px solid #f00;
   box-shadow: none;
   outline: none;
 }
@@ -367,9 +368,6 @@ h1 {
   line-height: 3em;
   margin-bottom: 0.5em;
 }
-.inicioSession input[type=text]:hover {
-  border: 0px solid #f00;
-}
 .inicioSession input[type=text]:focus {
   outline: none;
 }
@@ -406,6 +404,7 @@ h1 {
   background: #fff;
 }
 .inputOption label {
+  cursor: pointer;
   border-radius: 4px;
   display: inline-block;
   color: #fff;
@@ -450,6 +449,5 @@ h1 {
   }
   .btnHeader {
     width: 100% !important;
-    border: 1px solid #f00;
   }
 }

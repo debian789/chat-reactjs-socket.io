@@ -10,7 +10,7 @@ export default class InputOptions extends React.Component {
   render() {
     return <div className="inputOption">
       <input id="file" type="file" name="file" onChange={this.sendFile.bind(this)}/>
-      <label htmlFor="file">Adjuntar imagen</label>
+      <label htmlFor="file">Adjuntar archivo</label>
     </div>
   }
 }
