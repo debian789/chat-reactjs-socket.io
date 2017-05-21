@@ -1,1 +1,1 @@
-export const defaultUrlSocket = process.env.SERVER || 'http://192.168.1.108:3000';
+export const defaultUrlSocket = 'https://chat-hide.herokuapp.com';
