@@ -1,2 +1,1 @@
-export const defaultUrlSocket = 'http://192.168.1.108:3000';
-// 'https://chat-reactjs.herokuapp.com'
+export const defaultUrlSocket = process.env.SERVER || 'http://192.168.1.108:3000';
