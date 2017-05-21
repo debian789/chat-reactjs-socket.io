@@ -64,16 +64,29 @@ footer
 .imgMessage
   width: 100%
 
-.video 
+.video
   video 
     width: 100%
   .video-controls
+    text-align left
+    width 100%
+    //float left
+    position  relative
+    //position absolute
+    //border 1px solid red
+    left 0
+    right 0
+
+    padding 0
     .video-play
-      display: block;
-      width: 30px;
+      display: inline-block;
+      width: 10%;
       height: 27px;
+      //border 1px solid red
     .video-time
-      display: none
+      width 100%
+      text-align right
+      display: inline-block
       span 
         display: inline-block
       .video-time__current
@@ -81,12 +94,20 @@ footer
     .video-mute
       display: none
     .video-seek
+      width:80%
+      display inline-block
       .video-progress-bar
         input 
           width:100%
+
     .video-fullscreen
-      position: absolute
-      left: 0
+      float right
+      position absolute
+      top 0
+      margin-right  0
+      right 0
+      bottom 1.5em
+      width 8%
 
 
 .itemListChat

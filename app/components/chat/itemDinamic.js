@@ -19,6 +19,10 @@ export default class ItemDinamic extends React.Component {
         element = <Video controls autoPlay>
           <source src={this.props.mensaje} type="video/mp4"/>
         </Video>
+      } else if (this.props.mensaje.split('.').indexOf('m4v') != -1) {
+        element = <Video controls autoPlay>
+          <source src={this.props.mensaje} type="video/mp4"/>
+        </Video>
       } else if (this.props.mensaje.split('.').indexOf('gif') != -1) {
         element = <img className="imgMessage" src={this.props.mensaje}/>
       } else if (this.props.mensaje.split('.').indexOf('png') != -1) {

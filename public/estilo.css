@@ -144,13 +144,23 @@ footer a {
 .video video {
   width: 100%;
 }
+.video .video-controls {
+  text-align: left;
+  width: 100%;
+  position: relative;
+  left: 0;
+  right: 0;
+  padding: 0;
+}
 .video .video-controls .video-play {
-  display: block;
-  width: 30px;
+  display: inline-block;
+  width: 10%;
   height: 27px;
 }
 .video .video-controls .video-time {
-  display: none;
+  width: 100%;
+  text-align: right;
+  display: inline-block;
 }
 .video .video-controls .video-time span {
   display: inline-block;
@@ -161,12 +171,21 @@ footer a {
 .video .video-controls .video-mute {
   display: none;
 }
+.video .video-controls .video-seek {
+  width: 80%;
+  display: inline-block;
+}
 .video .video-controls .video-seek .video-progress-bar input {
   width: 100%;
 }
 .video .video-controls .video-fullscreen {
+  float: right;
   position: absolute;
-  left: 0;
+  top: 0;
+  margin-right: 0;
+  right: 0;
+  bottom: 1.5em;
+  width: 8%;
 }
 .itemListChat {
   padding: 0.3em 1em 0.3em 1em;
