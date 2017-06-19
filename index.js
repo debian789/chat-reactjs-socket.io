@@ -20,7 +20,7 @@ let upload = multer({storage: storage})
 const port = process.env.PORT || 3000;
 const app = express();
 
-app.use('/public', express.static(__dirname + '/public'));
+app.use('/static', express.static(__dirname + '/chat/build/static'));
 app.use('/uploads', express.static(__dirname + '/uploads'));
 
 app.post('/upload', upload.single('file'), function (req, res, next) {
@@ -29,7 +29,7 @@ app.post('/upload', upload.single('file'), function (req, res, next) {
 })
 
 app.get('/', (req, res) => {
-    res.sendFile(__dirname + '/index.html');
+    res.sendFile(__dirname + '/chat/build/index.html');
 });
 
 let server = http.createServer(app).listen(port, () => {

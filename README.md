@@ -40,6 +40,16 @@ npm run start
 
 
 
+## Construir el proyecto web Chat
+
+En la carpeta chat ejecutar el siguiente comando
+
+ ´´´
+ npm run build
+
+ ´´´
+
+
 Miguel Suescun, <a href="https://twitter.com/debian789"> @debian789</a>
 
 
