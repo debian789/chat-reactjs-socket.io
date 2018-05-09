@@ -4,18 +4,17 @@ import InputMensaje from './InputMensaje';
 import uid from 'uid';
 import io from 'socket.io-client';
 
-
 export default class AppChat extends React.Component{
-
+	//inicializaciñon de state y contextos 
 	constructor(props){
 		super(props);
 		this.state = {mensajes:[],user:''}
 		this.sendMensaje =this.sendMensaje.bind(this);
 	}
 
-
+	// Esta pendiente de recibir informacion desde el server, cuando obtenga la infomacion 
+        // crea un nuevo mensaje 
 	componentWillMount(){
-
 		// Url de escucha de socket.io, el cliente con  el server
 		this.socket = io('https://chat-reactjs.herokuapp.com');
 		//this.socket = io('http://localhost:3000');
@@ -29,13 +28,12 @@ export default class AppChat extends React.Component{
 
 		//Obtiene los parametros que se pasaron por url 
 		let userUrl = this.props.params.user;
-
 		this.setState({user:userUrl});
-
-
 	}
 
-
+	// Esta función se encarga de armar el objeto mensaje con (nombre, mensaje y id) y envia 
+        // un envento con el mensaje al server de que el cliente creo el mensaje 
+        // y asi los demas usuarios del chat reciben la informacion eso lo hace con this.socket.emit()
 	sendMensaje(mensaje){
 		let mensajeEnviar = {mensaje:mensaje.mensaje,user:this.state.user,key:uid()}
 		let mensajeInsertar = {mensaje:mensaje.mensaje,user:this.state.user,key:uid(),estilo:'itemListChat'}
@@ -45,13 +43,12 @@ export default class AppChat extends React.Component{
 		this.socket.emit('mensaje',mensajeEnviar)
 	}
 
-
+	//Funcion para la creacion del mensaje se encarga de llenar el arreglo con los mensajes que lleguen y se envien 
 	newMensaje(mensaje){
 			this.state.mensajes.push(mensaje);
 			let mensajes = this.state.mensajes;
 			this.setState({mensajes:mensajes})
 	}
-
 
 	render(){
 		return <div>
@@ -61,6 +58,5 @@ export default class AppChat extends React.Component{
 				<InputMensaje  onSendMensaje={this.sendMensaje}/>
 			</div>
 		</div>
-
 	}
 }
