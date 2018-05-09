@@ -46,7 +46,6 @@ table {
 	border-collapse: collapse;
 	border-spacing: 0;
 }
-
 body{
 	background: #222222;
 }
@@ -56,7 +55,6 @@ footer{
 	bottom: 0;
 	text-align:  center;
 	color: white;
-
 }
 footer a {
 	color: white;
@@ -78,18 +76,14 @@ footer a {
 	right:0;
 	clear: both;
 }
-
 .panelListChat{
 	bottom: 3.2em;
 	left: 1em;
 	position: absolute;
 	right: 1em;
-
 	color:#222;
 }
-
-.itemListChat{
-	
+.itemListChat{	
 	padding: 0.3em 1em 0.3em 1em;
 	border-radius: 5px;
 	background: white;
@@ -97,46 +91,27 @@ footer a {
 	width: 80%;
 	text-align: right;
 	margin-left:auto;
-
 	}
 
-.itemListChat2{
-	
+.itemListChat2{	
 	padding: 0.3em 1em 0.3em 1em;
 	border-radius: 5px 5px 5px 5px;
 	background: #ccc;
 	margin-bottom: 0.5em;
 	width: 80%;
 	text-align: left;
-	margin-right:auto;
-	
+	margin-right:auto;	
 	}
-
-
 .itemListChat span{
 	display: block;
 	color:#ccc;
 	text-align: left;
-}
-
-
-
-
-	
+}	
 .itemListChat2 span{
 	display: block;
 	color:#efefef;
 	text-align: right;
 }
-
-
-
-
-
-
-
-
-
 .cuadroChat{
 	overflow: hidden;
 	border:1px solid white;
@@ -151,11 +126,7 @@ footer a {
 	right: 0;
 	background: #3C3C3C;
 	bottom: 5em;
-
-
 }
-
-
 .inicioSession{
 	border:1px solid white;
 	border-radius: 5px;
@@ -168,22 +139,16 @@ footer a {
 	width: 76%;
 	display: inline-block;
 	padding: 0 0 0 4%;
-	border:0;
-	
-	line-height: 3em;
-	
+	border:0;	
+	line-height: 3em;	
 }
-
 .inicioSession button{
 	display: inline-block;
 	width: 20%;
-	border:0;
-	
+	border:0;	
 	line-height: 3em;
-	padding: 0;
-	
+	padding: 0;	
 }
-
 .inputChat input{
 	width:  99%;
 	bottom: 0;
@@ -192,30 +157,25 @@ footer a {
 	text-align: right;
 }
 
-
 @media all and (max-width: 700px) {
 .cuadroChat{
 	width: 90%;
 
 }
 .salir{
-width: 90%;
-	
+	width: 90%;	
 }
-
 .titulo{
 	font-size: 25px;
 	width:  100%;
 }
 .inicioSession{
-width: 68%;
-padding:10%;
+	width: 68%;
+	padding:10%;
 }
-
 .inicioSession input[type=text]{
 	width: 62%;
 }
 .inicioSession button{
 	width: 30%
 }
-
