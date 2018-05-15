@@ -1,9 +1,9 @@
-import React from 'react';
+import React, {Component} from 'react';
 
-export default class InputMensaje extends React.Component{
+export default class InputMensaje extends Component{
 	onClick(evento){
 		//13 Corresponde a la tecla Enter
-		if(evento.keyCode == 13){
+		if(evento.keyCode === 13){
 			this.props.onSendMensaje.call(null,{mensaje:evento.target.value})
 			evento.target.value="";
 		}

@@ -1,20 +1,20 @@
-import express from 'express';
-import http from 'http';
-import engine from 'socket.io'
+const express = require('express');
+const http = require('http');
+const engine = require('socket.io')
 
 //si no existe un parametro que asocie el puerto 
 //El puerto por defecto sera 3000
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 3001;
 const app = express();
 
 //establecer la carpeta donde buscara los 
 //estaticos(.css,.js imagenes etc) 
-app.use('/public',express.static(__dirname+'/public'));
+app.use('/static',express.static(__dirname+'/build/static'));
 
 //esta es la pagina que responde cuando ingrese 
 //en este caso respondera un archivo html 
 app.get('/',(req,res) => {
-	res.sendFile(__dirname + '/index.html');
+	res.sendFile(__dirname + '/build/index.html');
 })
 
 //instancia el server y muestra en la consola que se esta //ejecutando y en que puerto 

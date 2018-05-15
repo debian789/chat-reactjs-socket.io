@@ -1,6 +1,6 @@
-import React from 'react';
+import React, {Component} from 'react';
 
-export default class ItemListChat extends React.Component{
+export default class ItemListChat extends Component{
 	render(){
 		// Con this.props.estiloItem optenemos los estilos CSS 
 		// que permiten distinguir si es un mensaje entrate o saliente 

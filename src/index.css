@@ -158,24 +158,25 @@ footer a {
 }
 
 @media all and (max-width: 700px) {
-.cuadroChat{
-	width: 90%;
+	.cuadroChat{
+		width: 90%;
 
-}
-.salir{
-	width: 90%;	
-}
-.titulo{
-	font-size: 25px;
-	width:  100%;
-}
-.inicioSession{
-	width: 68%;
-	padding:10%;
-}
-.inicioSession input[type=text]{
-	width: 62%;
-}
-.inicioSession button{
-	width: 30%
+	}
+	.salir{
+		width: 90%;	
+	}
+	.titulo{
+		font-size: 25px;
+		width:  100%;
+	}
+	.inicioSession{
+		width: 68%;
+		padding:10%;
+	}
+	.inicioSession input[type=text]{
+		width: 62%;
+	}
+	.inicioSession button{
+		width: 30%
+	}
 }

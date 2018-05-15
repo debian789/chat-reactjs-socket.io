@@ -1,10 +1,11 @@
-import React from 'react';
+import React, {Component} from 'react';
 import ListChat from './ListChat';
 import InputMensaje from './InputMensaje';
 import uid from 'uid';
 import io from 'socket.io-client';
+import {Link} from 'react-router-dom'
 
-export default class AppChat extends React.Component{
+export default class AppChat extends Component{
 	//inicializaciñon de state y contextos 
 	constructor(props){
 		super(props);
@@ -13,21 +14,22 @@ export default class AppChat extends React.Component{
 	}
 
 	// Esta pendiente de recibir informacion desde el server, cuando obtenga la infomacion 
-        // crea un nuevo mensaje 
+	// crea un nuevo mensaje 
 	componentWillMount(){
 		// Url de escucha de socket.io, el cliente con  el server
-		this.socket = io('https://chat-reactjs.herokuapp.com');
-		//this.socket = io('http://localhost:3000');
+		//this.socket = io('https://chat-reactjs.herokuapp.com');
+		this.socket = io('http://localhost:3001');
 
 		//Esta pendiente de recibir informacion desde el server
 		this.socket.on('mensaje',(mgs) => {
-			if(mgs.user != this.state.user){
+			if(mgs.user !== this.state.user){
 				this.newMensaje(mgs)
 			}
 		})
 
 		//Obtiene los parametros que se pasaron por url 
-		let userUrl = this.props.params.user;
+		//debugger
+		let userUrl = this.props.match.params.user;
 		this.setState({user:userUrl});
 	}
 
@@ -52,7 +54,7 @@ export default class AppChat extends React.Component{
 
 	render(){
 		return <div>
-			<a href="#" className="salir">Salir</a>
+			<Link to="/" className="salir">Salir</Link>
 			<div className="cuadroChat">
 				<ListChat conten={this.state.mensajes}/>
 				<InputMensaje  onSendMensaje={this.sendMensaje}/>
