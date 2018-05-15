@@ -24,6 +24,21 @@ npm run build
 npm run server 
 </pre>
 
+## Interfaz del chat
+
+### Ingresar
+![](https://s-media-cache-ak0.pinimg.com/originals/f2/f3/67/f2f36712d9d118cbf4474fd91aeb2c18.jpg)
+
+![alt InicioSesion ](https://s-media-cache-ak0.pinimg.com/originals/70/dc/43/70dc433954a26aeeb6fd9f6a1e4fa9a5.jpg)
+
+
+
+
+
+### Enviar mensajes
+![](https://s-media-cache-ak0.pinimg.com/originals/5c/dc/45/5cdc45ff57f276d4b4bfd3e94113ef44.jpg)
+
+![](https://s-media-cache-ak0.pinimg.com/originals/08/cb/97/08cb97a1ca64cc2b13a1e1efe5a3d0bb.jpg)
 
 # Desplegarlo en producción 
 
@@ -31,7 +46,7 @@ Es necesario hacer unos pequeños ajustes al codigo para iniciarlo, editar el ar
 
 
 
-Miguel Suescun, <a href="https://twitter.com/debian789"> @debian789</a>
+Miguel Suescun, <a href="https://twitter.com/debian789"> @debian789</a> - [miguelsuescun.co](http://miguelsuescun.co)
 
 
 
